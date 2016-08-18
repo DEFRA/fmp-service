@@ -1,0 +1,35 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8050,
+    "labels": "web"
+  },
+  "logging": {
+    "ops": {
+      "interval": 1000
+    },
+    "reporters": {
+      "console": [
+        {
+          "module": "good-squeeze",
+          "name": "Squeeze",
+          "args": [
+            {
+              "log": "*",
+              "response": "*",
+              "error": "*",
+              "request": "error"
+            }
+          ]
+        },
+        {
+          "module": "good-console"
+        },
+        "stdout"
+      ]
+    }
+  },
+  "envVars": {
+    "fmp_db_conn": ""
+  }
+}
