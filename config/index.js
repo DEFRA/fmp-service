@@ -2,10 +2,11 @@ var Joi = require('joi')
 var schema = require('./schema')
 var config = require('./server.json')
 
-if (config.envVars != null) {
+if (config.envVars) {
   var envVars = config.envVars
   for (var key in envVars) {
-    envVars[key] = process.env[key.toUpperCase()]
+    // if server.json has a value then override the env var
+    envVars[key] = envVars[key] || process.env[key.toUpperCase()]
   }
 }
 
