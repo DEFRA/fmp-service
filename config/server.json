@@ -30,6 +30,8 @@
     }
   },
   "envVars": {
-    "fmp_db_conn": ""
+    "fmp_db_conn": "",
+    "fmp_service_errbit_key": "",
+    "fmp_service_errbit_host": ""
   }
 }
