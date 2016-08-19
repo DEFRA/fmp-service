@@ -7,7 +7,9 @@ var serverSchema = Joi.object().required().keys({
 })
 
 var envVarSchema = Joi.object().required().keys({
-  fmp_db_conn: Joi.string().required()
+  fmp_db_conn: Joi.string().required(),
+  fmp_service_errbit_key: Joi.string().required(),
+  fmp_service_errbit_host: Joi.string().required()
 })
 
 module.exports = {
