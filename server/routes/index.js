@@ -1,3 +1,4 @@
 module.exports = [
-  require('./test-db.js')
+  require('./test-db.js'),
+  require('./zones.js')
 ]

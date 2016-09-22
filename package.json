@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
+  "engines": {
+    "node": "4.x"
+  },
   "scripts": {
     "start": "pm2 start config/pm2.json",
     "lint": "standard",
