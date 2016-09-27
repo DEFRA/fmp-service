@@ -3,7 +3,7 @@ var lab = exports.lab = Lab.script()
 var Code = require('code')
 var Hapi = require('hapi')
 var server = new Hapi.Server()
-var route = require('../server/routes/zones.js')
+var route = require('../../server/routes/zones.js')
 
 server.connection({ port: 8050 })
 server.route(route)
