@@ -1,3 +1,4 @@
 {
-    "getFloodZones": "select fmp.get_fmp_zones($1, $2, $3)"
+    "getFloodZones": "select fmp.get_fmp_zones($1, $2, $3)",
+    "isEngland": "select fmp.is_england($1, $2)"
 }

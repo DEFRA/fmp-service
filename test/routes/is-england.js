@@ -3,24 +3,12 @@ var lab = exports.lab = Lab.script()
 var Code = require('code')
 var Hapi = require('hapi')
 var server = new Hapi.Server()
-var route = require('../server/routes/zones.js')
+var route = require('../../server/routes/is-england.js')
 
 server.connection({ port: 8050 })
 server.route(route)
 
-var dbResponse = {
-  'point_in_england': true,
-  'buffer_in_england': true,
-  'england_error': false,
-  'floodzone_3': false,
-  'floodzone_3_error': false,
-  'areas_benefiting': false,
-  'areas_benefiting_error': false,
-  'floodzone_2': true,
-  'floodzone_2_error': false
-}
-
-lab.experiment('zones', function () {
+lab.experiment('route: is-england', function () {
   lab.before((done) => {
     server.start((err) => {
       if (err) {
@@ -31,10 +19,10 @@ lab.experiment('zones', function () {
   })
 
   // Happy tests
-  lab.test('zones: Happy1', function (done) {
+  lab.test('is-england: Happy1 is england', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/is-england/362066/387295'
     }
     // Mock the postgres database query
     server.ext('onPreHandler', (request, reply) => {
@@ -45,7 +33,7 @@ lab.experiment('zones', function () {
               callback(null, {
                 rows: [
                   {
-                    get_fmp_zones: dbResponse
+                    is_england: true
                   }
                 ]
               })
@@ -59,16 +47,50 @@ lab.experiment('zones', function () {
 
     server.inject(options, function (response) {
       Code.expect(response.statusCode).to.equal(200)
-      Code.expect(response.result).to.be.an.object()
-      Code.expect(response.result).to.equal(dbResponse)
+      Code.expect(response.result).to.be.a.object()
+      Code.expect(response.result).to.equal({ is_england: true })
       server.stop(done)
     })
   })
 
-  lab.test('zones: Database error', function (done) {
+  lab.test('is-england: Happy2 not england', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/is-england/362066/387295'
+    }
+    // Mock the postgres database query
+    server.ext('onPreHandler', (request, reply) => {
+      request.pg = {
+        client: {
+          query: (var1, var2, callback) => {
+            process.nextTick(() => {
+              callback(null, {
+                rows: [
+                  {
+                    is_england: false
+                  }
+                ]
+              })
+            })
+          }
+        },
+        kill: false
+      }
+      reply.continue()
+    })
+
+    server.inject(options, function (response) {
+      Code.expect(response.statusCode).to.equal(200)
+      Code.expect(response.result).to.be.a.object()
+      Code.expect(response.result).to.equal({ is_england: false })
+      server.stop(done)
+    })
+  })
+
+  lab.test('is-england: Database error', function (done) {
+    var options = {
+      method: 'GET',
+      url: '/is-england/362066/387295'
     }
     // Mock the postgres database query
     server.ext('onPreHandler', (request, reply) => {
@@ -91,10 +113,10 @@ lab.experiment('zones', function () {
     })
   })
 
-  lab.test('zones: Invalid data returned', function (done) {
+  lab.test('is-england: Invalid data returned', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/is-england/362066/387295'
     }
     // Mock the postgres database query
     server.ext('onPreHandler', (request, reply) => {
@@ -117,10 +139,10 @@ lab.experiment('zones', function () {
     })
   })
 
-  lab.test('zones: Invalid data returned 2', function (done) {
+  lab.test('is-england: Invalid data returned 2', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/is-england/362066/387295'
     }
     // Mock the postgres database query
     server.ext('onPreHandler', (request, reply) => {
@@ -131,9 +153,9 @@ lab.experiment('zones', function () {
               callback(null, {
                 rows: [
                   {
-                    get_fmp_zones: dbResponse
+                    is_england: true
                   }, {
-                    get_fmp_zones: dbResponse
+                    is_england: false
                   }
                 ]
               })
@@ -151,10 +173,10 @@ lab.experiment('zones', function () {
     })
   })
 
-  lab.test('zones: Invalid data returned 3', function (done) {
+  lab.test('is-england: Invalid data returned 3', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/is-england/362066/387295'
     }
     // Mock the postgres database query
     server.ext('onPreHandler', (request, reply) => {
@@ -180,10 +202,10 @@ lab.experiment('zones', function () {
   })
 
   // Unhappy tests
-  lab.test('zones no params', function (done) {
+  lab.test('is-england no params', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones'
+      url: '/is-england'
     }
 
     server.inject(options, function (response) {
@@ -192,10 +214,10 @@ lab.experiment('zones', function () {
     })
   })
 
-  lab.test('zones: invalid easting', function (done) {
+  lab.test('is-england: invalid easting', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/800000/600000/50'
+      url: '/is-england/800000/600000'
     }
 
     server.inject(options, function (response) {
@@ -204,10 +226,10 @@ lab.experiment('zones', function () {
     })
   })
 
-  lab.test('zones: invalid northing', function (done) {
+  lab.test('is-england: invalid northing', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/400000/-120/50'
+      url: '/is-england/400000/-120'
     }
 
     server.inject(options, function (response) {
@@ -216,10 +238,10 @@ lab.experiment('zones', function () {
     })
   })
 
-  lab.test('zones: invalid radius', function (done) {
+  lab.test('is-england: invalid radius', function (done) {
     var options = {
       method: 'GET',
-      url: '/zones/400000/600000/50.12'
+      url: '/is-england/400000/600000'
     }
 
     server.inject(options, function (response) {
