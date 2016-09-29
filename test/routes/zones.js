@@ -76,7 +76,7 @@ lab.experiment('zones', function () {
         client: {
           query: (var1, var2, callback) => {
             process.nextTick(() => {
-              callback(new Error('database error', null))
+              callback(new Error('database error'), null)
             })
           }
         },

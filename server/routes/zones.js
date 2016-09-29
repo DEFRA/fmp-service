@@ -15,7 +15,7 @@ module.exports = {
           return reply(Boom.badImplementation('Database call failed', err))
         }
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {
-          return reply(Boom.badRequest('Invalid result'), new Error('Expected an Array'))
+          return reply(Boom.badRequest('Invalid result', new Error('Expected an Array')))
         }
         reply(result.rows[0].get_fmp_zones)
       })
