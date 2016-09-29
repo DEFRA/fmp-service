@@ -19,7 +19,7 @@ lab.experiment('route: is-england', function () {
   })
 
   // Happy tests
-  lab.test('is-england: Happy1', function (done) {
+  lab.test('is-england: Happy1 is england', function (done) {
     var options = {
       method: 'GET',
       url: '/is-england/362066/387295'
@@ -47,8 +47,42 @@ lab.experiment('route: is-england', function () {
 
     server.inject(options, function (response) {
       Code.expect(response.statusCode).to.equal(200)
-      Code.expect(response.result).to.be.a.boolean()
-      Code.expect(response.result).to.equal(true)
+      Code.expect(response.result).to.be.a.object()
+      Code.expect(response.result).to.equal({ is_england: true })
+      server.stop(done)
+    })
+  })
+
+  lab.test('is-england: Happy2 not england', function (done) {
+    var options = {
+      method: 'GET',
+      url: '/is-england/362066/387295'
+    }
+    // Mock the postgres database query
+    server.ext('onPreHandler', (request, reply) => {
+      request.pg = {
+        client: {
+          query: (var1, var2, callback) => {
+            process.nextTick(() => {
+              callback(null, {
+                rows: [
+                  {
+                    is_england: false
+                  }
+                ]
+              })
+            })
+          }
+        },
+        kill: false
+      }
+      reply.continue()
+    })
+
+    server.inject(options, function (response) {
+      Code.expect(response.statusCode).to.equal(200)
+      Code.expect(response.result).to.be.a.object()
+      Code.expect(response.result).to.equal({ is_england: false })
       server.stop(done)
     })
   })
