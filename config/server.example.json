@@ -4,6 +4,9 @@
     "port": 8050,
     "labels": "web"
   },
+  "database": {
+    "connectionString": ""
+  },
   "logging": {
     "ops": {
       "interval": 1000
@@ -29,9 +32,9 @@
       ]
     }
   },
-  "envVars": {
-    "fmp_db_conn": "",
-    "fmp_service_errbit_key": "",
-    "fmp_service_errbit_host": ""
+  "errbit": {
+    "env": "",
+    "key": "",
+    "host": ""
   }
 }
