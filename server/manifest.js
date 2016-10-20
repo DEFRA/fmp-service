@@ -14,7 +14,7 @@ const manifest = {
       plugin: {
         register: 'hapi-node-postgres',
         options: {
-          connectionString: config.envVars.fmp_db_conn
+          connectionString: config.database.connectionString
         }
       }
     },
@@ -27,11 +27,7 @@ const manifest = {
     {
       plugin: {
         register: 'node-hapi-airbrake',
-        options: {
-          key: config.envVars.fmp_service_errbit_key,
-          env: 'production',
-          host: config.envVars.fmp_service_errbit_host
-        }
+        options: config.errbit
       }
     }
   ]
