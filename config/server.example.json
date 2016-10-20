@@ -5,7 +5,7 @@
     "labels": "web"
   },
   "database": {
-    "connectionString": ""
+    "connectionString": "http://dummyuri"
   },
   "logging": {
     "ops": {
@@ -33,8 +33,8 @@
     }
   },
   "errbit": {
-    "env": "",
-    "key": "",
-    "host": ""
+    "env": "replace_this",
+    "key": "replace_this",
+    "host": "http://dummyuri"
   }
 }
