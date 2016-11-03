@@ -33,6 +33,7 @@
     }
   },
   "errbit": {
+    "postErrors": false,
     "env": "replace_this",
     "key": "replace_this",
     "host": "http://dummyuri",
