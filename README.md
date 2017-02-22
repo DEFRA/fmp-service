@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/EnvironmentAgency/fmp-service.svg?branch=master)](https://travis-ci.org/EnvironmentAgency/fmp-service)
-[![Dependency Status](https://david-dm.org/environmentagency/fmp-service.svg)](https://david-dm.org/environmentagency/fmp-service)
-[![Test Coverage](https://codeclimate.com/github/EnvironmentAgency/fmp-service/badges/coverage.svg)](https://codeclimate.com/github/EnvironmentAgency/fmp-service/coverage)
+[![Build Status](https://travis-ci.org/DEFRA/fmp-service.svg?branch=master)](https://travis-ci.org/DEFRA/fmp-service)
+[![Dependency Status](https://david-dm.org/DEFRA/fmp-service.svg)](https://david-dm.org/DEFRA/fmp-service)
+[![Test Coverage](https://codeclimate.com/github/DEFRA/fmp-service/badges/coverage.svg)](https://codeclimate.com/github/DEFRA/fmp-service/coverage)
 
 # FMP-Service
 
