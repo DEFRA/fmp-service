@@ -7,7 +7,7 @@ module.exports = {
   path: '/test-db',
   config: {
     description: 'Simple route to test that the database connection functions and returns data',
-    handler: async function (request, h) {
+    handler: async (request, h) => {
       try {
         const db = request.pg.client
         const result = await db.query('select count(1) from fmp.defences')

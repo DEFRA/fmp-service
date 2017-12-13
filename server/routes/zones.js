@@ -8,7 +8,7 @@ module.exports = {
   path: '/zones/{x}/{y}/{radius}',
   config: {
     description: 'Gets the flood map for planning flood zones for a point and radius',
-    handler: async function (request, h) {
+    handler: async (request, h) => {
       try {
         const result = await services.getFloodZones(request.params.x, request.params.y, request.params.radius)
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {

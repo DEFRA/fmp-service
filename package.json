@@ -9,14 +9,13 @@
   "scripts": {
     "start": "pm2 start config/pm2.json",
     "lint": "standard",
-    "test": "npm run lint && lab -c -r console -o stdout -r lcov -o lcov.info"
+    "test": "standard && lab -c -r console -o stdout -r lcov -o lcov.info"
   },
   "author": "ea.gov.uk",
   "license": "OGL",
   "dependencies": {
     "airbrake-js": "^0.9.9",
     "boom": "7.1.1",
-    "code": "3.0.2",
     "glue": "5.0.0",
     "good": "7.0.1",
     "good-console": "6.1.2",
@@ -24,11 +23,12 @@
     "good-squeeze": "4.0.0",
     "hapi": "17.1.1",
     "joi": "13.0.2",
-    "lab": "11.0.0",
     "pg": "7.4.0"
   },
   "devDependencies": {
+    "code": "5.1.2",
     "codeclimate-test-reporter": "0.3.3",
+    "lab": "15.1.2",
     "standard": "10.0.3"
   }
 }

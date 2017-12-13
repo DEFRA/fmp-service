@@ -7,14 +7,14 @@ const manifest = {
   },
   register: {
     plugins: []
-  }//[
+  }// [
     // {
     //   plugin: {
     //     register: 'good',
     //     options: config.logging
     //   }
     // }
-  //]
+  // ]
 }
 
 // if (config.errbit.postErrors) {

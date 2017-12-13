@@ -9,7 +9,7 @@ module.exports = {
   path: '/is-england/{x}/{y}',
   config: {
     description: 'Returns if Easting and Northing is within England polygon',
-    handler: async function (request, h) {
+    handler: async (request, h) => {
       try {
         const result = await services.isEngland(request.params.x, request.params.y)
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {
