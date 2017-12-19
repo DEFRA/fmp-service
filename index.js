@@ -1,1 +1,3 @@
-require('./server')()
+require('./server')().catch((err) => {
+  throw err
+})

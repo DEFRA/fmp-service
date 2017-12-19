@@ -17,12 +17,12 @@ const manifest = {
   // ]
 }
 
-// if (config.errbit.postErrors) {
-//   delete config.errbit.postErrors
-//   manifest.register.plugins.push({
-//     plugin: require('./plugins/airbrake'),
-//     options: config.errbit
-//   })
-// }
+if (config.errbit.postErrors) {
+  delete config.errbit.postErrors
+  manifest.register.plugins.push({
+    plugin: require('node-hapi-airbrake'),
+    options: config.errbit
+  })
+}
 
 module.exports = manifest
