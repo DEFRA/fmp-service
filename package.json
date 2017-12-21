@@ -16,18 +16,18 @@
   "dependencies": {
     "boom": "7.1.1",
     "glue": "5.0.0",
-    "good": "7.0.1",
-    "good-console": "6.1.2",
+    "good": "corbinu/good",
+    "good-console": "6.4.1",
     "good-file": "6.0.1",
-    "good-squeeze": "4.0.0",
-    "hapi": "17.1.1",
+    "good-squeeze": "5.0.2",
+    "hapi": "17.2.0",
     "joi": "13.0.2",
     "node-hapi-airbrake": "0.1.1",
     "pg": "7.4.0"
   },
   "devDependencies": {
     "code": "5.1.2",
-    "codeclimate-test-reporter": "0.3.3",
+    "codeclimate-test-reporter": "0.5.0",
     "lab": "15.1.2",
     "standard": "10.0.3"
   }

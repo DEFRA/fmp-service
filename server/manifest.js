@@ -6,15 +6,11 @@ const manifest = {
     host: config.server.host
   },
   register: {
-    plugins: []
-  }// [
-    // {
-    //   plugin: {
-    //     register: 'good',
-    //     options: config.logging
-    //   }
-    // }
-  // ]
+    plugins: [{
+      plugin: require('good'),
+      options: config.logging
+    }]
+  }
 }
 
 if (config.errbit.postErrors) {

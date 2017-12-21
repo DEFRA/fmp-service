@@ -29,9 +29,8 @@ module.exports = async () => {
       }
       return h.continue
     })
-
     await server.start()
-    console.log('Started ' + appName)
+    server.log(['info'], 'Started ' + appName + ' on ' + JSON.stringify(manifest.server))
   } catch (err) {
     throw err
   }
