@@ -1,4 +1,3 @@
-'use strict'
 const Lab = require('lab')
 const lab = exports.lab = Lab.script()
 const Code = require('code')
@@ -14,17 +13,11 @@ let services = require('../../server/services')
 
 lab.experiment('route: is-england', () => {
   lab.before(async () => {
-    try {
-      await server.start()
-      console.log('started server')
-    } catch (err) {
-      throw err
-    }
+    await server.start()
   })
 
   lab.after(async () => {
     await server.stop()
-    console.log('stopped server')
   })
 
   // Happy tests

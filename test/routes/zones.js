@@ -27,21 +27,11 @@ var dbResponse = {
 
 lab.experiment('zones', () => {
   lab.before(async () => {
-    try {
-      await server.start()
-      console.log('Server started')
-    } catch (err) {
-      throw err
-    }
+    await server.start()
   })
 
   lab.after(async () => {
-    try {
-      await server.stop()
-      console.log('Server stopped')
-    } catch (err) {
-      throw err
-    }
+    await server.stop()
   })
 
   // Happy tests

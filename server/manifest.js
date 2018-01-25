@@ -1,22 +1,26 @@
-var config = require('../config')
+const config = require('../config')
 
 const manifest = {
   server: {
-    port: process.env.PORT || config.server.port,
+    port: config.server.port,
     host: config.server.host
   },
   register: {
-    plugins: [{
-      plugin: require('good'),
-      options: config.logging
-    }]
+    plugins: [
+      {
+        plugin: 'good',
+        options: config.logging
+      },
+      './plugins/log-errors',
+      './plugins/router'
+    ]
   }
 }
 
 if (config.errbit.postErrors) {
   delete config.errbit.postErrors
   manifest.register.plugins.push({
-    plugin: require('node-hapi-airbrake'),
+    plugin: 'node-hapi-airbrake',
     options: config.errbit
   })
 }
