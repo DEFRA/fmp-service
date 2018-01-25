@@ -1,6 +1,6 @@
 {
   "name": "fmp-service",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
   "engines": {
