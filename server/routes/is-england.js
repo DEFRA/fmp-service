@@ -7,7 +7,7 @@ const services = require('../services')
 module.exports = {
   method: 'GET',
   path: '/is-england/{x}/{y}',
-  config: {
+  options: {
     description: 'Returns if Easting and Northing is within England polygon',
     handler: async (request, h) => {
       try {

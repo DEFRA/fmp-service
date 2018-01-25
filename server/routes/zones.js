@@ -6,7 +6,7 @@ const services = require('../services')
 module.exports = {
   method: 'GET',
   path: '/zones/{x}/{y}/{radius}',
-  config: {
+  options: {
     description: 'Gets the flood map for planning flood zones for a point and radius',
     handler: async (request, h) => {
       try {

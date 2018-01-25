@@ -5,7 +5,7 @@ const Boom = require('boom')
 module.exports = {
   method: 'GET',
   path: '/test-db',
-  config: {
+  options: {
     description: 'Simple route to test that the database connection functions and returns data',
     handler: async (request, h) => {
       try {
