@@ -22,7 +22,7 @@ lab.experiment('route: is-england', () => {
 
   // Happy tests
   lab.test('is-england: Happy1 is england', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/362066/387295'
     }
@@ -44,7 +44,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: Happy2 not england', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/362066/387295'
     }
@@ -68,7 +68,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: Database error', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/362066/387295'
     }
@@ -82,7 +82,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: Invalid data returned', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/362066/387295'
     }
@@ -97,7 +97,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: Invalid data returned 2', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/362066/387295'
     }
@@ -120,7 +120,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: Invalid data returned 3', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/362066/387295'
     }
@@ -136,7 +136,7 @@ lab.experiment('route: is-england', () => {
 
   // Unhappy tests
   lab.test('is-england no params', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england'
     }
@@ -146,7 +146,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: invalid easting', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/800000/600000'
     }
@@ -156,7 +156,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: invalid northing', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/400000/-120'
     }
@@ -166,7 +166,7 @@ lab.experiment('route: is-england', () => {
   })
 
   lab.test('is-england: invalid radius', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/is-england/400000/600000'
     }

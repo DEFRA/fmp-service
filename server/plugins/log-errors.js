@@ -7,7 +7,7 @@ exports.plugin = {
       if (response.isBoom) {
         // An error was raised during
         // processing the request
-        var statusCode = response.output.statusCode
+        const statusCode = response.output.statusCode
 
         request.log('error', {
           statusCode: statusCode,

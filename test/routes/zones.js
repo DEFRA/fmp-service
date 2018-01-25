@@ -1,9 +1,9 @@
 'user strict'
 
-var Lab = require('lab')
-var lab = exports.lab = Lab.script()
-var Code = require('code')
-var Hapi = require('hapi')
+const Lab = require('lab')
+const lab = exports.lab = Lab.script()
+const Code = require('code')
+const Hapi = require('hapi')
 const server = Hapi.Server({
   host: 'localhost',
   port: 8050
@@ -13,7 +13,7 @@ server.route(route)
 
 let services = require('../../server/services')
 
-var dbResponse = {
+const dbResponse = {
   'point_in_england': true,
   'buffer_in_england': true,
   'england_error': false,
@@ -36,7 +36,7 @@ lab.experiment('zones', () => {
 
   // Happy tests
   lab.test('zones: Happy1', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
@@ -59,7 +59,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: Database error', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
@@ -73,7 +73,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: Invalid data returned', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
@@ -87,7 +87,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: Invalid data returned 2', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
@@ -109,7 +109,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: Invalid data returned 3', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
@@ -126,7 +126,7 @@ lab.experiment('zones', () => {
 
   // Unhappy tests
   lab.test('zones no params', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones'
     }
@@ -136,7 +136,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: invalid easting', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/800000/600000/50'
     }
@@ -146,7 +146,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: invalid northing', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/400000/-120/50'
     }
@@ -156,7 +156,7 @@ lab.experiment('zones', () => {
   })
 
   lab.test('zones: invalid radius', async () => {
-    var options = {
+    const options = {
       method: 'GET',
       url: '/zones/400000/600000/50.12'
     }
