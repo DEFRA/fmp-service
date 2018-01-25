@@ -1,14 +1,19 @@
-var Lab = require('lab')
-var lab = exports.lab = Lab.script()
-var Code = require('code')
-var Hapi = require('hapi')
-var server = new Hapi.Server()
-var route = require('../../server/routes/zones.js')
+'user strict'
 
-server.connection({ port: 8050 })
+const Lab = require('lab')
+const lab = exports.lab = Lab.script()
+const Code = require('code')
+const Hapi = require('hapi')
+const server = Hapi.Server({
+  host: 'localhost',
+  port: 8050
+})
+const route = require('../../server/routes/zones')
 server.route(route)
 
-var dbResponse = {
+let services = require('../../server/services')
+
+const dbResponse = {
   'point_in_england': true,
   'buffer_in_england': true,
   'england_error': false,
@@ -20,211 +25,143 @@ var dbResponse = {
   'floodzone_2_error': false
 }
 
-lab.experiment('zones', function () {
-  lab.before((done) => {
-    server.start((err) => {
-      if (err) {
-        throw err
-      }
-      done()
-    })
+lab.experiment('zones', () => {
+  lab.before(async () => {
+    await server.start()
+  })
+
+  lab.after(async () => {
+    await server.stop()
   })
 
   // Happy tests
-  lab.test('zones: Happy1', function (done) {
-    var options = {
+  lab.test('zones: Happy1', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
-    // Mock the postgres database query
-    server.ext('onPreHandler', (request, reply) => {
-      request.pg = {
-        client: {
-          query: (var1, var2, callback) => {
-            process.nextTick(() => {
-              callback(null, {
-                rows: [
-                  {
-                    get_fmp_zones: dbResponse
-                  }
-                ]
-              })
-            })
-          }
-        },
-        kill: false
-      }
-      reply.continue()
-    })
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(200)
-      Code.expect(response.result).to.be.an.object()
-      Code.expect(response.result).to.equal(dbResponse)
-      server.stop(done)
-    })
+    // Mock getFloodZones
+    services.getFloodZones = (x, y) => {
+      return {
+        rows: [
+          {
+            get_fmp_zones: dbResponse
+          }
+        ]
+      }
+    }
+
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(200)
+    Code.expect(response.result).to.be.an.object()
+    Code.expect(response.result).to.equal(dbResponse)
   })
 
-  lab.test('zones: Database error', function (done) {
-    var options = {
+  lab.test('zones: Database error', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
-    // Mock the postgres database query
-    server.ext('onPreHandler', (request, reply) => {
-      request.pg = {
-        client: {
-          query: (var1, var2, callback) => {
-            process.nextTick(() => {
-              callback(new Error('database error'), null)
-            })
-          }
-        },
-        kill: false
-      }
-      reply.continue()
-    })
+    // Mock getFloodZones
+    services.getFloodZones = (x, y) => {
+      throw new Error('Test error')
+    }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(500)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(500)
   })
 
-  lab.test('zones: Invalid data returned', function (done) {
-    var options = {
+  lab.test('zones: Invalid data returned', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
-    // Mock the postgres database query
-    server.ext('onPreHandler', (request, reply) => {
-      request.pg = {
-        client: {
-          query: (var1, var2, callback) => {
-            process.nextTick(() => {
-              callback(null, null)
-            })
-          }
-        },
-        kill: false
-      }
-      reply.continue()
-    })
+    // Mock getFloodZones
+    services.getFloodZones = (x, y) => {
+      return null
+    }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(400)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(400)
   })
 
-  lab.test('zones: Invalid data returned 2', function (done) {
-    var options = {
+  lab.test('zones: Invalid data returned 2', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
-    // Mock the postgres database query
-    server.ext('onPreHandler', (request, reply) => {
-      request.pg = {
-        client: {
-          query: (var1, var2, callback) => {
-            process.nextTick(() => {
-              callback(null, {
-                rows: [
-                  {
-                    get_fmp_zones: dbResponse
-                  }, {
-                    get_fmp_zones: dbResponse
-                  }
-                ]
-              })
-            })
+    // Mock getFloodZones
+    services.getFloodZones = (x, y) => {
+      return {
+        rows: [
+          {
+            get_fmp_zones: dbResponse
+          }, {
+            get_fmp_zones: dbResponse
           }
-        },
-        kill: false
+        ]
       }
-      reply.continue()
-    })
+    }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(400)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(400)
   })
 
-  lab.test('zones: Invalid data returned 3', function (done) {
-    var options = {
+  lab.test('zones: Invalid data returned 3', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/362066/387295/50'
     }
-    // Mock the postgres database query
-    server.ext('onPreHandler', (request, reply) => {
-      request.pg = {
-        client: {
-          query: (var1, var2, callback) => {
-            process.nextTick(() => {
-              callback(null, {
-                rows: 'error'
-              })
-            })
-          }
-        },
-        kill: false
+    // Mock getFloodZones
+    services.getFloodZones = (x, y) => {
+      return {
+        rows: 'error'
       }
-      reply.continue()
-    })
+    }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(400)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(400)
   })
 
   // Unhappy tests
-  lab.test('zones no params', function (done) {
-    var options = {
+  lab.test('zones no params', async () => {
+    const options = {
       method: 'GET',
       url: '/zones'
     }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(404)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(404)
   })
 
-  lab.test('zones: invalid easting', function (done) {
-    var options = {
+  lab.test('zones: invalid easting', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/800000/600000/50'
     }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(400)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(400)
   })
 
-  lab.test('zones: invalid northing', function (done) {
-    var options = {
+  lab.test('zones: invalid northing', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/400000/-120/50'
     }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(400)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(400)
   })
 
-  lab.test('zones: invalid radius', function (done) {
-    var options = {
+  lab.test('zones: invalid radius', async () => {
+    const options = {
       method: 'GET',
       url: '/zones/400000/600000/50.12'
     }
 
-    server.inject(options, function (response) {
-      Code.expect(response.statusCode).to.equal(400)
-      server.stop(done)
-    })
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(400)
   })
 })

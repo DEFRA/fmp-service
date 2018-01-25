@@ -1,24 +1,22 @@
-var Joi = require('joi')
-var Boom = require('boom')
-var services = require('../services')
+const Joi = require('joi')
+const Boom = require('boom')
+const services = require('../services')
 
 module.exports = {
   method: 'GET',
   path: '/zones/{x}/{y}/{radius}',
-  config: {
+  options: {
     description: 'Gets the flood map for planning flood zones for a point and radius',
-    handler: function (request, reply) {
-      var db = request.pg.client
-      var params = request.params
-      services.getFloodZones(db, params.x, params.y, params.radius, function (err, result) {
-        if (err) {
-          return reply(Boom.badImplementation('Database call failed', err))
-        }
+    handler: async (request, h) => {
+      try {
+        const result = await services.getFloodZones(request.params.x, request.params.y, request.params.radius)
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {
-          return reply(Boom.badRequest('Invalid result', new Error('Expected an Array')))
+          return Boom.badRequest('Invalid result', new Error('Expected an Array'))
         }
-        reply(result.rows[0].get_fmp_zones)
-      })
+        return result.rows[0].get_fmp_zones
+      } catch (err) {
+        return Boom.badImplementation('Database call failed', err)
+      }
     },
     validate: {
       params: {
