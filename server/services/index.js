@@ -1,9 +1,15 @@
-var queries = require('./queries.json')
+const queries = require('./queries.json')
+const conn = require('../../config').database.connectionString
+const { Pool } = require('pg')
+const pool = new Pool({
+  connectionString: conn
+})
+
 module.exports = {
-  getFloodZones: function (db, x, y, radius, callback) {
-    return db.query(queries.getFloodZones, [x, y, radius], callback)
+  getFloodZones: (x, y, radius) => {
+    return pool.query(queries.getFloodZones, [x, y, radius])
   },
-  isEngland: function (db, x, y, callback) {
-    return db.query(queries.isEngland, [x, y], callback)
+  isEngland: (x, y) => {
+    return pool.query(queries.isEngland, [x, y])
   }
 }

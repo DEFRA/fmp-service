@@ -1,5 +1,6 @@
 module.exports = [
-  require('./is-england.js'),
-  require('./test-db.js'),
-  require('./zones.js')
+  require('./error'),
+  require('./is-england'),
+  require('./test-db'),
+  require('./zones')
 ]

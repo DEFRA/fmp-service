@@ -1,12 +1,12 @@
-var Joi = require('joi')
+const Joi = require('joi')
 
-var serverSchema = Joi.object().required().keys({
+const serverSchema = Joi.object().required().keys({
   host: Joi.string().hostname(),
   port: Joi.number().required(),
   labels: Joi.string()
 })
 
-var databaseSchema = Joi.object().required().keys({
+const databaseSchema = Joi.object().required().keys({
   connectionString: Joi.string().required()
 })
 
