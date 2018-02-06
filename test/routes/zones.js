@@ -58,6 +58,16 @@ lab.experiment('zones', () => {
     Code.expect(response.result).to.equal(dbResponse)
   })
 
+  lab.test('zones: polygon', async () => {
+    const options = {
+      method: 'GET',
+      url: '/zones?polygon=[[400000, 600000]]'
+    }
+
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(200)
+  })
+
   lab.test('zones: Database error', async () => {
     const options = {
       method: 'GET',
@@ -163,15 +173,5 @@ lab.experiment('zones', () => {
 
     const response = await server.inject(options)
     Code.expect(response.statusCode).to.equal(400)
-  })
-
-  lab.test.only('zones: polygon', async () => {
-    const options = {
-      method: 'GET',
-      url: '/zones?polygon=[[400000, 600000]]'
-    }
-
-    const response = await server.inject(options)
-    Code.expect(response.statusCode).to.equal(200)
   })
 })
