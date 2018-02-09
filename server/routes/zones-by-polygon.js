@@ -4,27 +4,26 @@ const services = require('../services')
 
 module.exports = {
   method: 'GET',
-  path: '/zones/{easting}/{northing}/{radius}',
+  path: '/zones-by-polygon',
   options: {
-    description: 'Gets the flood map for planning flood zones for a point and radius',
+    description: 'Gets the flood map for planning flood zones for a polygon in geojson format',
     handler: async (request, h) => {
       try {
-        let result = await services.getFloodZones(request.params.easting, request.params.northing, request.params.radius)
+        let result = await services.getFloodZonesByPolygon(request.query.polygon)
 
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {
           return Boom.badRequest('Invalid result', new Error('Expected an Array'))
         }
 
-        return result.rows[0].get_fmp_zones
+        return result.rows[0].get_fmp_zones_by_polygon
       } catch (err) {
         return Boom.badImplementation('Database call failed', err)
       }
     },
     validate: {
-      params: {
-        easting: Joi.number().max(700000).positive().required(),
-        northing: Joi.number().max(1300000).positive().required(),
-        radius: Joi.number().integer().positive().required()
+      query: {
+        // TODO improve validation to geojson or json
+        polygon: Joi.string().required()
       }
     }
   }

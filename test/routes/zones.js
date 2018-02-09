@@ -38,7 +38,7 @@ lab.experiment('zones', () => {
   lab.test('zones: Happy1', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/zones?easting=362066&northing=387295&radius=50'
     }
 
     // Mock getFloodZones
@@ -58,10 +58,20 @@ lab.experiment('zones', () => {
     Code.expect(response.result).to.equal(dbResponse)
   })
 
+  lab.test('zones: polygon', async () => {
+    const options = {
+      method: 'GET',
+      url: '/zones?polygon=[[400000, 600000]]'
+    }
+
+    const response = await server.inject(options)
+    Code.expect(response.statusCode).to.equal(200)
+  })
+
   lab.test('zones: Database error', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/zones?easting=362066&northing=387295&radius=50'
     }
     // Mock getFloodZones
     services.getFloodZones = (x, y) => {
@@ -75,7 +85,7 @@ lab.experiment('zones', () => {
   lab.test('zones: Invalid data returned', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/zones?easting=362066&northing=387295&radius=50'
     }
     // Mock getFloodZones
     services.getFloodZones = (x, y) => {
@@ -89,7 +99,7 @@ lab.experiment('zones', () => {
   lab.test('zones: Invalid data returned 2', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/zones?easting=362066&northing=387295&radius=50'
     }
     // Mock getFloodZones
     services.getFloodZones = (x, y) => {
@@ -111,7 +121,7 @@ lab.experiment('zones', () => {
   lab.test('zones: Invalid data returned 3', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/362066/387295/50'
+      url: '/zones?easting=362066&northing=387295&radius=50'
     }
     // Mock getFloodZones
     services.getFloodZones = (x, y) => {
@@ -132,13 +142,13 @@ lab.experiment('zones', () => {
     }
 
     const response = await server.inject(options)
-    Code.expect(response.statusCode).to.equal(404)
+    Code.expect(response.statusCode).to.equal(400)
   })
 
   lab.test('zones: invalid easting', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/800000/600000/50'
+      url: '/zones?easting=800000&northing=600000&radius=50'
     }
 
     const response = await server.inject(options)
@@ -148,7 +158,7 @@ lab.experiment('zones', () => {
   lab.test('zones: invalid northing', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/400000/-120/50'
+      url: '/zones?easting=400000&northing=-120&radius=50'
     }
 
     const response = await server.inject(options)
@@ -158,7 +168,7 @@ lab.experiment('zones', () => {
   lab.test('zones: invalid radius', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/400000/600000/50.12'
+      url: '/zones?easting=400000&northing=600000&radius=50.12'
     }
 
     const response = await server.inject(options)

@@ -1,4 +1,5 @@
 {
     "getFloodZones": "select fmp.get_fmp_zones($1, $2, $3);",
+    "getFloodZonesByPolygon": "select fmp.get_fmp_zones_by_polygon($1);",
     "isEngland": "select fmp.is_england($1, $2);"
 }
