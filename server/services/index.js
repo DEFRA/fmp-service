@@ -9,6 +9,9 @@ module.exports = {
   getFloodZones: (x, y, radius) => {
     return pool.query(queries.getFloodZones, [x, y, radius])
   },
+  getFloodZonesByPolygon: (polygon) => {
+    return pool.query(queries.getFloodZonesByPolygon, [polygon])
+  },
   isEngland: (x, y) => {
     return pool.query(queries.isEngland, [x, y])
   }
