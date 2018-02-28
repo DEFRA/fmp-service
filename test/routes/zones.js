@@ -61,7 +61,7 @@ lab.experiment('zones', () => {
   lab.test('zones: Database error', async () => {
     const options = {
       method: 'GET',
-      url: '/zones/362066/387295/1'
+      url: '/zones/362066/387295/1/g'
     }
     // Mock getFloodZones
     services.getFloodZones = (x, y) => {
