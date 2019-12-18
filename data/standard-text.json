@@ -12,8 +12,7 @@
         "heading": "Surface Water, Ordinary Watercourses and Groundwater Flooding",
         "standard-text": "Lead Local Flood Authorities (LLFA) are responsible for managing local flood risk from ordinary watercourses, surface water flooding and groundwater flooding.  You should check with the LLFA as they may have more up to date information regarding this type of flooding.
         The Risk of Flooding from Surface Water Flood Map can be viewed and downloaded as a PDF file on GOV.UK by following this link: https: //flood-warning-information.service.gov.uk/long-term-flood-risk 
-        Information on how to reduce the impact of flooding from groundwater can be found online by the following link: https: //www.gov.uk/government/publications/flooding-from-groundwater", "url1": "https://flood-warning-information.service.gov.uk/long-term-flood-risk",
-        "url2": "https://www.gov.uk/government/publications/flooding-from-groundwater"
+        Information on how to reduce the impact of flooding from groundwater can be found online by the following link: https: //www.gov.uk/government/publications/flooding-from-groundwater", "url1": "https://flood-warning-information.service.gov.uk/long-term-flood-risk", "url2": "https://www.gov.uk/government/publications/flooding-from-groundwater"
     },
     "floodingFromReservoirs": {
         "heading": "Flooding from Reservoirs",
@@ -42,8 +41,7 @@
                         You may also wish tlt pre application advice (chargeable service):
                         https: //www.gov.uk/government/publications/pre-planning-application-enquiry-form-preliminary-opinion
                         Information about the risks of flooding and coastal change can be found here:
-                        https: //www.gov.uk/guidance/flood-risk-and-coastal-change", "url1": "https://data.gov.uk/dataset/recorded-flood-outlines1",
-        "url2": "https://www.gov.uk/government/publications/pre-planning-application-enquiry-form-preliminary-opinion",
+                        https: //www.gov.uk/guidance/flood-risk-and-coastal-change", "url1": "https://data.gov.uk/dataset/recorded-flood-outlines1", "url2": "https://www.gov.uk/government/publications/pre-planning-application-enquiry-form-preliminary-opinion",
         "url3": "https://www.gov.uk/guidance/flood-risk-and-coastal-change"
     },
     "strategicModel": {
@@ -75,8 +73,7 @@
             "standard-text": "The Flood Zone maps in this area are formed of National Generalised Modelling (NGM), which was published in 2004 to create fluvial floodplain maps on a national scale. This modelling was used to give an indication of areas that may be at risk from flooding. 
     
                             Please note that NGM is indicative only and is not suitable for identifying whether an individual property will flood, for detailed decision making or for use in site specific Flood Risk or Strategic Flood Risk Assessments. Where this data is used for anything other than broad catchment or Shoreline Management Plan scale further evidence, verification and studies should be undertaken to better define the risk of flooding.
-                            NGM is available free of charge subject to an open data licence. It can be downloaded from the following address: https: //data.gov.uk/", 
-                            "url1": "https://data.gov.uk/"
+                            NGM is available free of charge subject to an open data licence. It can be downloaded from the following address: https: //data.gov.uk/",  "url1": "https://data.gov.uk/"
         },
         "floodWarning": {
             "heading": "Flood Warning",
