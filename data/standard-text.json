@@ -1,0 +1,87 @@
+{
+    "floodMapForPlanning": {
+        "heading": "Flood Map for Planning (Rivers and Sea)",
+        "standard-text": "The Flood Map for Planning (Rivers and Sea) indicates the area at risk of flooding for a flood event with a 0.5% chance of occurring in any year for flooding from the sea, or a 1% chance of occurring in any year for fluvial (river) flooding (Flood Zone 3).
+    It also shows the extent of the Extreme Flood Outlines (Flood Zone 2) which represents the extent of a flood event with a 0.1% chance of occurring in any year, or the highest recorded historic extent if greater. The Flood Zones refer to the land at risk of flooding and do not refer to individual properties. 
+    The Flood Map for Planning (Rivers and Sea) can be viewed and downloaded as a PDF file on GOV.UK by following this link: https: //flood-map-for-planning.service.gov.uk or downloaded in GIS format under an open data licence from the following address: https://data.gov.uk/publisher/environment-agency
+    The Flood Map is updated on a quarterly basis to account for any amendments required.",
+    "url1": "https://flood-map-for-planning.service.gov.uk",
+        "url2": "https://data.gov.uk/publisher/environment-agency"
+    },
+    "surfaceWaterOrdinaryWaterCourse": {
+        "heading": "Surface Water, Ordinary Watercourses and Groundwater Flooding",
+        "standard-text": "Lead Local Flood Authorities (LLFA) are responsible for managing local flood risk from ordinary watercourses, surface water flooding and groundwater flooding.  You should check with the LLFA as they may have more up to date information regarding this type of flooding.
+        The Risk of Flooding from Surface Water Flood Map can be viewed and downloaded as a PDF file on GOV.UK by following this link: https: //flood-warning-information.service.gov.uk/long-term-flood-risk 
+        Information on how to reduce the impact of flooding from groundwater can be found online by the following link: https: //www.gov.uk/government/publications/flooding-from-groundwater", "url1": "https://flood-warning-information.service.gov.uk/long-term-flood-risk",
+        "url2": "https://www.gov.uk/government/publications/flooding-from-groundwater"
+    },
+    "floodingFromReservoirs": {
+        "heading": "Flooding from Reservoirs",
+        "standard-text": "The Risk of Flooding from Reservoirs Flood Map can be viewed and downloaded as a PDF file on GOV.UK by following this link: https://flood-warning-information.service.gov.uk/long-term-flood-risk",
+        "url1": "https://flood-warning-information.service.gov.uk/long-term-flood-risk"
+    },
+    "sewerFlooding": {
+        "heading": "Sewer Flooding",
+        "standard-text": "Your local water company may have information on sewage flooding in your area of interest."
+    },
+    "areasBenefittingFromDefences": {
+        "heading": "Areas Benefitting from Defences",
+        "standard-text": "Areas Benefitting from Defences show the area benefiting from defences from a 1 in 100 (1% AEP) year fluvial event or a 1 in 200 (0.5% AEP) tidal/coastal event. 
+                    The associated dataset can be downloaded in GIS from the following link: https: //data.gov.uk/dataset/flood-map-for-planning-rivers-and-sea-areas-benefiting-from-defences", "url1": "https://data.gov.uk/dataset/flood-map-for-planning-rivers-and-sea-areas-benefiting-from-defences"
+    },
+    "climateChange": {
+        "heading": "Climate Change",
+        "standard-text": "In February 2016 the ‘Flood Risk Assessments: Climate Change Allowances’ were published on GOV.UK. This is a replacement of previous climate change allowances for planning applications. The data provided in this product may not include the new allowances. Where the new allowances are not available you will need to consider this data and factor in the new allowances to demonstrate the development will be safe from flooding. 
+                        The Environment Agency will incorporate the new allowances into future modelling studies. For now, it remains the applicant’s responsibility to demonstrate through their proposal and flood risk assessments that new developments will be safe in flood risk terms for its lifetime.
+                        The Flood Zones shown on the Environment Agency’s Flood Map for Planning (Rivers and Sea) do not take account of the possible impacts of climate change and consequent changes in the future probability of flooding. Reference should therefore also be made to the Strategic Flood Risk Assessment (https: //www.gov.uk/guidance/flood-risk-and-coastal-change#Strategic-Flood-Risk-Assessment-section) when considering location and potential future flood risks to developments and land uses.", "url1": "https://www.gov.uk/guidance/flood-risk-and-coastal-change#Strategic-Flood-Risk-Assessment-section"
+    },
+    "recordedFloodOutlines": {
+        "heading": "Recorded Flood Outlines",
+        "standard-text": "Recorded Flood Outlines can be downloaded in GIS format from the following link: https://data.gov.uk/dataset/recorded-flood-outlines1
+                        Please note that our records are not comprehensive and that the map is an indicative outline of areas which have previously flooded based on the best available data, not all properties within this area will have flooded. It is possible that other flooding may have occurred that we do not have records for.
+                        You may also wish tlt pre application advice (chargeable service):
+                        https: //www.gov.uk/government/publications/pre-planning-application-enquiry-form-preliminary-opinion
+                        Information about the risks of flooding and coastal change can be found here:
+                        https: //www.gov.uk/guidance/flood-risk-and-coastal-change", "url1": "https://data.gov.uk/dataset/recorded-flood-outlines1",
+        "url2": "https://www.gov.uk/government/publications/pre-planning-application-enquiry-form-preliminary-opinion",
+        "url3": "https://www.gov.uk/guidance/flood-risk-and-coastal-change"
+    },
+    "strategicModel": {
+        "heading": "Strategic Model",
+        "standard-text": " The data provided within this product has been generated by strategic scale flood models which are not intended for use at the individual property scale. If you are intending to use this data as part of a Flood Risk Assessment, please include an appropriate modelling tolerance as part of your assessment."
+    },
+    "expiryOfModelledData": {
+        "heading": "Expiry of Modelled Data",
+        "standard-text": "The data supplied represents the best available information at the time of production however the Environment Agency has a rolling programme to update its modelling. It is recommended that you check prior to the submission of any Flood Risk Assessment that the data provided has not be superseded."
+    },
+    "floodRiskActivityPermits": {
+        "heading": "Flood Risk Activity Permits",
+        "standard-text": "Under the Environmental Permitting (England and Wales) Regulations 2016, any permanent or temporary works in, over, under or within proximity to a designated main river or flood defence structure, may require an Environmental Permit for Flood Risk Activities from the Environment Agency. 
+                        Please go to this website to find out more and how to apply:
+                        https: //www.gov.uk/guidance/flood-risk-activities-environmental-permits", "url1": "https://www.gov.uk/guidance/flood-risk-activities-environmental-permits"
+    },
+    "Optional": {
+        "lidar": {
+            "heading": "Lidar",
+            "standard-text": "The Environment Agency’s store of LiDAR data is now available free of charge subject to an open data licence. It can be downloaded from: https://environment.data.gov.uk/DefraDataDownload/?Mode=survey",
+            "url1": "https://environment.data.gov.uk/DefraDataDownload/?Mode=survey"
+        },
+        "newModelDelivered": {
+            "heading": "New model delivered, Flood Map for Planning not yet updated",
+            "standard-text": "Please note: The Flood Zone extents provided for XXXXXXXXX show the outputs from the XXXXXXXXX. As our systems are updated on a quarterly basis they will differ from the extents which appear on our website currently. The Flood Zone extents provided are due to go live on our website in XXXXXXXX."
+        },
+        "National Generalised Modelling": {
+            "heading": "National Generalised Modelling",
+            "standard-text": "The Flood Zone maps in this area are formed of National Generalised Modelling (NGM), which was published in 2004 to create fluvial floodplain maps on a national scale. This modelling was used to give an indication of areas that may be at risk from flooding. 
+    
+                            Please note that NGM is indicative only and is not suitable for identifying whether an individual property will flood, for detailed decision making or for use in site specific Flood Risk or Strategic Flood Risk Assessments. Where this data is used for anything other than broad catchment or Shoreline Management Plan scale further evidence, verification and studies should be undertaken to better define the risk of flooding.
+                            NGM is available free of charge subject to an open data licence. It can be downloaded from the following address: https: //data.gov.uk/", 
+                            "url1": "https://data.gov.uk/"
+        },
+        "floodWarning": {
+            "heading": "Flood Warning",
+            "standard-text": "The site is covered by a Floodl
+                            The site is not covered by a Flood Warning."
+        }
+    }
+}
