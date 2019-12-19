@@ -3,5 +3,6 @@ module.exports = [
   require('./is-england'),
   require('./test-db'),
   require('./zones'),
-  require('./zones-by-polygon')
+  require('./zones-by-polygon'),
+  require('./standard-text')
 ]
