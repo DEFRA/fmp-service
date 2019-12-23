@@ -65,7 +65,7 @@
             "heading": "New model delivered, Flood Map for Planning not yet updated",
             "standardText": "Please note: The Flood Zone extents provided for XXXXXXXXX show the outputs from the XXXXXXXXX. As our systems are updated on a quarterly basis they will differ from the extents which appear on our website currently. The Flood Zone extents provided are due to go live on our website in XXXXXXXX."
         },
-        "National Generalised Modelling": {
+        "nationalGeneralisedModelling": {
             "heading": "National Generalised Modelling",
             "standardText": "The Flood Zone maps in this area are formed of National Generalised Modelling (NGM), which was published in 2004 to create fluvial floodplain maps on a national scale. This modelling was used to give an indication of areas that may be at risk from flooding. \r\n\r\nPlease note that NGM is indicative only and is not suitable for identifying whether an individual property will flood, for detailed decision making or for use in site specific Flood Risk or Strategic Flood Risk Assessments. Where this data is used for anything other than broad catchment or Shoreline Management Plan scale further evidence, verification and studies should be undertaken to better define the risk of flooding.\r\nNGM is available free of charge subject to an open data licence. It can be downloaded from the following address: https:\/\/data.gov.uk\/ \r\n",
             "url1": "https://data.gov.uk/"
