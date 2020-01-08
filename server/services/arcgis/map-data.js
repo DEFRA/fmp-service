@@ -1,5 +1,5 @@
-const Boom = require('boom');
-const Wreck = require('@hapi/wreck');
+const Boom = require('boom')
+const Wreck = require('@hapi/wreck')
 
 var mapData = async function (url) {
   try {
