@@ -41,7 +41,7 @@ function sendMessages (sbService, queueName) {
   })
 }
 
-var connStr = 'Endpoint=sb://sndfm2infsb1001.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ght2ixCfykVOr/z/HY1ERSo5IO3r/vSmHAHvJjrZ/VM='
+var connStr = '' // Pick it up from the azure environment
 
 if (!connStr) throw new Error('Must provide connection string')
 var queueName = 'fews-eventcode-queue'

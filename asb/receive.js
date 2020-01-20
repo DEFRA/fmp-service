@@ -1,7 +1,7 @@
 const { ServiceBusClient, ReceiveMode } = require('@azure/service-bus')
 
 // Define connection string and related Service Bus entity names here
-const connectionString = 'Endpoint=sb://sndfm2infsb1001.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ght2ixCfykVOr/z/HY1ERSo5IO3r/vSmHAHvJjrZ/VM='
+const connectionString = '' // Pick it up from the azure environment
 const queueName = 'fews-eventcode-queue'
 
 async function main () {
