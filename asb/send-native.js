@@ -53,7 +53,7 @@ sbService.createQueueIfNotExists(queueName, function (err) {
   if (err) {
     console.log('Failed to create queue: ', err)
   } else {
-    // setInterval(checkForMessages.bind(null, sbService, queueName, processMessage.bind(null, sbService)), 5000)
+    setInterval(checkForMessages.bind(null, sbService, queueName, processMessage.bind(null, sbService)), 5000)
     setInterval(sendMessages.bind(null, sbService, queueName), 15000)
   }
 })
