@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+        "name": "outputSbQueue",
+        "type": "serviceBus",
+        "queueName": "fews-eventcode-queue",
+        "connection": "AzureWebJobsServiceBus",
+        "direction": "out"
+    }
+],
+"disabled": false
+}
