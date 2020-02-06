@@ -1,7 +1,4 @@
 {
-  "tracing": {
-    "consoleLevel": "verbose"
-  },
   "version": "2.0",
   "functions": [
     "HttpSendTrigger"
