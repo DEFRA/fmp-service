@@ -1,6 +1,11 @@
 {
+  "tracing": {
+    "consoleLevel": "verbose"
+  },
   "version": "2.0",
-  "functions": ["HttpSendTrigger"],
+  "functions": [
+    "HttpSendTrigger"
+  ],
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
     "version": "[1.*, 2.0.0)"
