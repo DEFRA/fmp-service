@@ -6,13 +6,13 @@ module.exports = {
   path: '/printservice',
   options: {
     description: 'Returns Print Service Data',
-    handler: async (request, h) => {
+    handler: async () => {
       try {
         const x = 383819
         const y = 398052
         const resourceUrl = `geometry={x:${x},y:${y},spatialReference:{wkid:27000}}&f=json`
         const fullPrintServiceURL = `${printServiceUrl}?${resourceUrl}`
-        const { res, payload } = await Wreck.get(fullPrintServiceURL)
+        const { payload } = await Wreck.get(fullPrintServiceURL)
         var payloadResponseASJson = JSON.parse(payload.toString())
         return payloadResponseASJson
       } catch (error) {
