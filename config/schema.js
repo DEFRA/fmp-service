@@ -22,5 +22,7 @@ module.exports = {
     proxy: Joi.string().allow('')
   }),
   printServiceSubmitJobBaseURL: Joi.string().required(),
-  printServiceJobStatusAndMapsURL: Joi.string().required()
+  printServiceJobStatusAndMapsURL: Joi.string().required(),
+  sandboxURL:Joi.string().required(),
+  appgatewayURL:Joi.string().required()
 }
