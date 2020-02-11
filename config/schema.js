@@ -21,5 +21,6 @@ module.exports = {
     host: Joi.string().required(),
     proxy: Joi.string().allow('')
   }),
-  printServiceURL: Joi.string().required()
+  printServiceSubmitJobBaseURL: Joi.string().required(),
+  printServiceJobStatusAndMapsURL: Joi.string().required()
 }
