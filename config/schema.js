@@ -20,5 +20,6 @@ module.exports = {
     key: Joi.string().required(),
     host: Joi.string().required(),
     proxy: Joi.string().allow('')
-  })
+  }),
+  printServiceURL: Joi.string().required()
 }
