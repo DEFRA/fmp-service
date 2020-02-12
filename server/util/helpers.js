@@ -1,6 +1,7 @@
 const sandboxURL = require('../../config').sandboxURL;
 const appgatewayURL = require('../../config').appgatewayURL;
 const printServiceSubmitJobBaseURL = require('../../config').printServiceSubmitJobBaseURL;
+const printServiceJobStatusAndMapsURL = require('../../config').printServiceJobStatusAndMapsURL
 
 const replaceSandBoxURLWithAppGateWayURL = (url, sandboxURL, appgatewayURL) => {
     return url.replace(sandboxURL, appgatewayURL)
@@ -28,8 +29,22 @@ const constructPrintServiceURL = (x, y) => {
     const fullPrintServiceSubmitJobBaseURL = `${printServiceSubmitJobBaseURL}?${resourceUrl}`;
     return fullPrintServiceSubmitJobBaseURL
 }
+
+const constructPrintServiceJobStatusAndMapsURL = (jobId) => {
+    return `${printServiceJobStatusAndMapsURL}${jobId}/results/output?f=pjson`
+}
+
+const constructJobStatusURL = (jobId) => {
+    return `${printServiceJobStatusAndMapsURL}${jobId}?f=json`
+}
+const jobStatus = {
+    SUCCESS: 'esriJobSucceeded'
+}
 module.exports = {
     createArrayOfMapUrls: createArrayOfMapUrls,
     replaceSandBoxURLWithAppGateWayURL: replaceSandBoxURLWithAppGateWayURL,
-    constructPrintServiceURL: constructPrintServiceURL
+    constructPrintServiceURL: constructPrintServiceURL,
+    constructPrintServiceJobStatusAndMapsURL: constructPrintServiceJobStatusAndMapsURL,
+    constructJobStatusURL: constructJobStatusURL,
+    jobStatus: jobStatus
 }

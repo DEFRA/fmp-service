@@ -1,6 +1,6 @@
 const Boom = require('boom');
 const Wreck = require('@hapi/wreck');
-const printServiceJobStatusAndMapsURL = require('../../config').printServiceJobStatusAndMapsURL
+
 
 const mapdata = require('./../routes/pdf-report/maps-data')
 const helpers = require('./../util/helpers')
@@ -14,22 +14,32 @@ module.exports = {
         const x = 383819
         const y = 398052
         const fullPrintServiceSubmitJobBaseURL = helpers.constructPrintServiceURL(x, y)
+
         const { res, payload } = await Wreck.get(fullPrintServiceSubmitJobBaseURL)
         var payloadResponseASJson = JSON.parse(payload.toString())
-        while (payloadResponseASJson.jobStatus !== 'esriJobSucceeded') {
-          var newURL = `${printServiceJobStatusAndMapsURL}${payloadResponseASJson.jobId}?f=json`
-          const { result, payload } = await Wreck.get(newURL)
+
+        while (payloadResponseASJson.jobStatus !== helpers.jobStatus.SUCCESS) {
+
+          var jobStatusURL = helpers.constructJobStatusURL(payloadResponseASJson.jobId)
+          const { result, payload } = await Wreck.get(jobStatusURL)
           var submittedJob = JSON.parse(payload.toString())
+
           payloadResponseASJson.jobStatus = submittedJob.jobStatus;
-          if (payloadResponseASJson.jobStatus == 'esriJobSucceeded') {
-            const { result, payload } = await Wreck.get(`${printServiceJobStatusAndMapsURL}${payloadResponseASJson.jobId}/results/output?f=pjson`)
+          if (payloadResponseASJson.jobStatus === helpers.jobStatus.SUCCESS) {
+
+            const printServiceJobStatusAndMapsURL = helpers.constructPrintServiceJobStatusAndMapsURL(payloadResponseASJson.jobId)
+            const { result, payload } = await Wreck.get(printServiceJobStatusAndMapsURL)
             var pdfMapsURLObject = JSON.parse(payload.toString());
-            var appgatewayURL = helpers.createArrayOfMapUrls(pdfMapsURLObject)
-            var floodMapImage = mapdata(appgatewayURL[0])
-            var HistoricImage = mapdata(historicFloodMapUR[1])
-            var modelledMapImage = mapdata(modelledMapUrls[2])
-            var allImages = [await floodMapImage, await HistoricImage, await modelledMapImage]
-            return allImages
+            if (pdfMapsURLObject.value.success === true) {
+              var appgatewayURL = helpers.createArrayOfMapUrls(pdfMapsURLObject)
+              var floodMapImage = mapdata(appgatewayURL[0],'floodMapImage')
+              var HistoricImage = mapdata(appgatewayURL[1],'HistoricImage')
+              var modelledMapImage = mapdata(appgatewayURL[2],'HistoricImage')
+              var allImages = [await floodMapImage, await HistoricImage, await modelledMapImage]
+              return allImages
+            } else {
+              return Boom.badRequest(`There is problem occured in executing and getting the pdf mps png url's as success flag is ${success}`)
+            }
           }
         }
       }
