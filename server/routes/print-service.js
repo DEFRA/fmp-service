@@ -3,6 +3,7 @@ const Wreck = require('@hapi/wreck');
 const body = require('./../services/pdfmake/body')
 const mapdata = require('./pdf-report/map-data')
 const helpers = require('./../util/helpers')
+const completedPDF=require('./../routes/pdf-report/completed-pdf')
 
 module.exports = {
   method: 'GET',
@@ -39,6 +40,7 @@ module.exports = {
                   }
                 }
               }
+              var r = await completedPDF(appgatewayURLWithData)
               return appgatewayURLWithData;
             } else {
               return Boom.badRequest(`There is problem occured in executing and getting the pdf mps png url's as success flag is ${success}`)

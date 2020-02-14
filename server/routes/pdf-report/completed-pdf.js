@@ -1,17 +1,17 @@
-const pdfMake = require('../node_modules/pdfmake/build/pdfmake');
-const vfsFonts = require('../node_modules/pdfmake/build/vfs_fonts');
+const pdfMake = require('../../../node_modules/pdfmake/build/pdfmake');
+const vfsFonts = require('../../../node_modules/pdfmake/build/vfs_fonts');
 pdfMake.vfs = vfsFonts.pdfMake.vfs;
 var fs = require('fs');
-const body = require('./body');
+const body = require('./../../../server/services/pdfmake/body')
 const Boom = require('boom');
 
 
 
-var completedPDFData = async () => {
+var completedPDFData = async (rawdata) => {
     try {
-        var bodyData = await body();
+        var bodyData = await body(rawdata);
         var fullContentForPDF = {
-            content: bodyData,
+            content: bodyData
         };
         pdfMake.createPdf(fullContentForPDF).getBuffer(function (result) {
             fs.writeFile(`generatedpdfs/${new Date().toISOString()}.pdf`, result, function (err) {
