@@ -26,7 +26,6 @@ module.exports = {
 
           payloadResponseASJson.jobStatus = submittedJob.jobStatus;
           if (payloadResponseASJson.jobStatus === helpers.jobStatus.SUCCESS) {
-
             const printServiceJobStatusAndMapsURL = helpers.constructPrintServiceJobStatusAndMapsURL(payloadResponseASJson.jobId)
             const { result, payload } = await Wreck.get(printServiceJobStatusAndMapsURL)
             var pdfMapsURLObject = JSON.parse(payload.toString());
@@ -53,3 +52,4 @@ module.exports = {
     }
   }
 }
+

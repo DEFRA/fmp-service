@@ -18,11 +18,9 @@ var mapData = async function (pdfUrl) {
             return ''
         }
     }
-
     catch (error) {
         return Boom.badRequest("Some Issue occured in getting the report Type data")
     }
+}
 
-}
-}
 module.exports = mapData;
