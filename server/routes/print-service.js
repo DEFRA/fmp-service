@@ -1,9 +1,9 @@
 const Boom = require('boom');
 const Wreck = require('@hapi/wreck');
-
-
-const mapdata = require('./../routes/pdf-report/maps-data')
+const body = require('./../services/pdfmake/body')
+const mapdata = require('./pdf-report/map-data')
 const helpers = require('./../util/helpers')
+
 module.exports = {
   method: 'GET',
   path: '/printservice',
@@ -30,13 +30,17 @@ module.exports = {
             const printServiceJobStatusAndMapsURL = helpers.constructPrintServiceJobStatusAndMapsURL(payloadResponseASJson.jobId)
             const { result, payload } = await Wreck.get(printServiceJobStatusAndMapsURL)
             var pdfMapsURLObject = JSON.parse(payload.toString());
-            if (pdfMapsURLObject.value.success === true) {
-              var appgatewayURL = helpers.createArrayOfMapUrls(pdfMapsURLObject)
-              var floodMapImage = mapdata(appgatewayURL[0],'floodMapImage')
-              var HistoricImage = mapdata(appgatewayURL[1],'HistoricImage')
-              var modelledMapImage = mapdata(appgatewayURL[2],'HistoricImage')
-              var allImages = [await floodMapImage, await HistoricImage, await modelledMapImage]
-              return allImages
+            if (pdfMapsURLObject.value.error !== true) {
+              var appgatewayURLWithData = helpers.createArrayOfMapUrls(pdfMapsURLObject)
+              for (let [key, value] of Object.entries(appgatewayURLWithData)) {
+                for (let [innerKey, innerValue] of Object.entries(value)) {
+                  if (innerKey === 'imageUrl') {
+                    innerValue = await mapdata(innerValue)
+                    value.imageUrl = innerValue
+                  }
+                }
+              }
+              return appgatewayURLWithData;
             } else {
               return Boom.badRequest(`There is problem occured in executing and getting the pdf mps png url's as success flag is ${success}`)
             }
@@ -49,6 +53,3 @@ module.exports = {
     }
   }
 }
-
-
-
