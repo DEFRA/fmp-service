@@ -3,18 +3,17 @@ const Wreck = require('@hapi/wreck');
 const body = require('./../services/pdfmake/body')
 const mapdata = require('./pdf-report/map-data')
 const helpers = require('./../util/helpers')
-const completedPDF=require('./../routes/pdf-report/completed-pdf')
+const completedPDF = require('./../routes/pdf-report/completed-pdf')
 
 module.exports = {
   method: 'GET',
-  path: '/printservice',
+  path: '/printservice/{x}/{y}',
   options: {
     description: 'Returns Print Service Data',
     handler: async (request, h) => {
       try {
-        const x = 383819
-        const y = 398052
-        const fullPrintServiceSubmitJobBaseURL = helpers.constructPrintServiceURL(x, y)
+
+        const fullPrintServiceSubmitJobBaseURL = helpers.constructPrintServiceURL(request.params.x, request.params.y)
 
         const { res, payload } = await Wreck.get(fullPrintServiceSubmitJobBaseURL)
         var payloadResponseASJson = JSON.parse(payload.toString())
@@ -40,8 +39,8 @@ module.exports = {
                   }
                 }
               }
-              var r = await completedPDF(appgatewayURLWithData)
-              return appgatewayURLWithData;
+               await completedPDF(appgatewayURLWithData)
+              return 
             } else {
               return Boom.badRequest(`There is problem occured in executing and getting the pdf mps png url's as success flag is ${success}`)
             }
