@@ -10,7 +10,7 @@ module.exports = {
     handler: async (request, h) => {
       try {
         const standardTextData = fs.readJsonSync(filePath)
-        let key = request.params.sectionRequested
+        const key = request.params.sectionRequested
         if (key) {
           if (standardTextData.hasOwnProperty(key)) {
             return Object.freeze(standardTextData[key])
