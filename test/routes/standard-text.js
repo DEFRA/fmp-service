@@ -63,6 +63,6 @@ lab.experiment('route: standard-text', () => {
 
     const response = await server.inject(options)
     Code.expect(response.statusCode).to.equal(200)
-    Code.expect(response.result).to.equal(standardTextJson['Optional'])
+    Code.expect(response.result).to.equal(standardTextJson.Optional)
   })
 })

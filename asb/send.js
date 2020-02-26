@@ -13,7 +13,7 @@ async function main () {
     for (let i = 0; i < 10; i++) {
       const message = {
         body: `Hello world! ${i}`,
-        label: `test`,
+        label: 'test',
         userProperties: {
           myCustomPropertyName: `my custom property value ${i}`
         }
