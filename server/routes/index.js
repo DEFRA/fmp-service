@@ -7,4 +7,5 @@ module.exports = [
   require('./zones-by-polygon'),
   require('./standard-text'),
   require('./standard-text-by-section'),
-  require('./print-service')]
+  require('./print-service'),
+  require('./reference-number')]
