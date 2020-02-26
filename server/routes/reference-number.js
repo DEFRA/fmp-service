@@ -5,7 +5,7 @@ module.exports = {
   method: 'GET',
   path: '/reference-number',
   options: {
-    description: 'Returns all standard-text',
+    description: 'Returns application reference number',
     handler: async (request, h) => {
       try {
         const applicationReferenceNumber = AppRefNumberGenerator()
