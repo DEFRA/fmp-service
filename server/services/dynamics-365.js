@@ -14,7 +14,7 @@ var resource = 'https://fmfp-dev.api.crm4.dynamics.com'
 // Dynamics 365 Client Id when registered in Azure
 var clientId = 'a406e97e-f7c6-41c7-adb9-75a22661bf41'
 var username = 'Harsh.Vasudev@defradev.onmicrosoft.com'
-var password = 'Data@2903'
+var password = '--'
 
 var adalContext = new AuthenticationContext(authorityUrl)
 
@@ -43,6 +43,23 @@ var dynamicsWebApi = new DynamicsWebAPI({
 // call any function
 dynamicsWebApi.executeUnboundFunction('WhoAmI').then(function (response) {
   console.log('Hello Dynamics 365! My id is: ' + response.UserId)
+}).catch(function (error) {
+  console.log(error.message)
+})
+
+// initialize a CRM entity record object
+var customer = {
+  fmfp_name: 'Harsh Vasudev',
+  fmfp_emailaddress: 'harsh.vasudev@environment-agency.gov.uk',
+  fmfp_companyname: 'Environment Agency',
+  fmfp_location: '292924,232323',
+  fmfp_telephonenumber: '292924,232323',
+  fmfp_sitelocation: 'Chester'
+}
+
+// call dynamicsWebApi.create function
+dynamicsWebApi.create(customer, 'fmfp_customers').then(function (id) {
+  // do something with id here
 }).catch(function (error) {
   console.log(error.message)
 })
