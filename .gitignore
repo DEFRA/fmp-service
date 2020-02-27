@@ -4,3 +4,4 @@ server.json
 .vscode
 logs
 local.settings.json
+*.pdf
