@@ -3,9 +3,9 @@ async function body (rawdataASArray) {
     var data = rawdataASArray.map((item) => {
       if (!item.error) {
         if (item.imageUrl !== '') {
-          return [`Map Type: ${item.title},  Data Produced On: ${item.modellingDate} \n\n`, { image: item.imageUrl, height: 500, width: 500 }]
+          return [{ image: item.imageUrl,  height: 595.28, width: 841.89}]
         } else {
-          return [`Map Type: ${item.title}`, 'No data available \n\n']
+          return [`Map Type: ${item.title}`, 'No data available']
         }
       }
       return ''

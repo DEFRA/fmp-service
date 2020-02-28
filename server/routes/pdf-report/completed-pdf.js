@@ -9,6 +9,14 @@ var completedPDFData = async (rawdata) => {
   try {
     var bodyData = await body(rawdata)
     var fullContentForPDF = {
+      pageSize: { height: 595.28, width: 841.89 },
+      pageMargins: [0, 0, 0, 0],
+      info: {
+        title: 'Flood Map for Planning Document',
+        author: 'FMFP Team',
+        subject: 'This document, can be used for planning application',
+        keywords: 'FMFP'
+        },
       content: bodyData
     }
     pdfMake.createPdf(fullContentForPDF).getBuffer(function (result) {
