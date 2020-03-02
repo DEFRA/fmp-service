@@ -8,4 +8,5 @@ module.exports = [
   require('./standard-text'),
   require('./standard-text-by-section'),
   require('./print-service'),
-  require('./reference-number')]
+  require('./reference-number'),
+  require('./pso')]

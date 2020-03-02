@@ -3,6 +3,7 @@ const Boom = require('boom')
 const appgatewayURL = require('../../config').appgatewayURL
 const printServiceSubmitJobBaseURL = require('../../config').printServiceSubmitJobBaseURL
 const printServiceJobStatusAndMapsURL = require('../../config').printServiceJobStatusAndMapsURL
+const printServicePSOContactDetailsURL = require('../../config').printServicePSOContactDetailsURL
 
 const checkforNullOrUndefinedOrEmpty = (item) => {
   if (typeof item === 'undefined' && item) {
@@ -45,6 +46,11 @@ const constructPrintServiceURL = (x, y) => {
   return fullPrintServiceSubmitJobBaseURL
 }
 
+const constructPrintServiceURLForPSOAddress = (x, y) => {
+  const resourceUrl = `geometry={"x": ${x},"y": ${y},"spatialReference": {"wkid": 27700}}&f=json`
+  const fullPrintServicePSOContactDetailsURL = `${printServicePSOContactDetailsURL}?${resourceUrl}`
+  return fullPrintServicePSOContactDetailsURL
+}
 const constructPrintServiceJobStatusAndMapsURL = (jobId) => {
   return `${printServiceJobStatusAndMapsURL}${jobId}/results/output?f=pjson`
 }
@@ -62,5 +68,6 @@ module.exports = {
   constructPrintServiceURL: constructPrintServiceURL,
   constructPrintServiceJobStatusAndMapsURL: constructPrintServiceJobStatusAndMapsURL,
   constructJobStatusURL: constructJobStatusURL,
+  constructPrintServiceURLForPSOAddress: constructPrintServiceURLForPSOAddress,
   jobStatus: jobStatus
 }
