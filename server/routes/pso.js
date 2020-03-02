@@ -18,15 +18,27 @@ module.exports = {
             if (payloadResponseASJson && payloadResponseASJson.results && payloadResponseASJson.results[0] && payloadResponseASJson.results[0].value) {
               if (payloadResponseASJson.results[0].value.errorMessage === '' && payloadResponseASJson.results[0].value.details) {
                 var innerObject = payloadResponseASJson.results[0].value;
-                if (innerObject.details.areaEmailAddress) {
-                  psoContactDetails.EmailAddress = innerObject.details.areaEmailAddress
-                }
+
+                //Area Name
                 if (innerObject.details.areaName) {
                   psoContactDetails.AreaName = innerObject.details.areaName
                 }
+                else if (innerObject.details.areaName === '') {
+                  psoContactDetails.areaName = 'Area Name Not Populated'
+                } else {
+                  return Boom.badRequest('Error in Area Name Field as there are no email details in the response')
+                }
+
+                //Email Address
                 if (innerObject.details.areaEmailAddress) {
                   psoContactDetails.EmailAddress = innerObject.details.areaEmailAddress
+                } else if (innerObject.details.areaEmailAddress === '') {
+                  psoContactDetails.EmailAddress = 'Email Address Not Populated'
+                } else {
+                  return Boom.badRequest('Error in Email Field as there are no email details in the response')
                 }
+
+                //Local Authororities
                 psoContactDetails.LocalAuthorities.push(innerObject.details.localAuthorities.map((item) => { return item }))
 
               }
@@ -35,7 +47,7 @@ module.exports = {
             } else {
               return Boom.badRequest('There are no details in the response')
             }
-           
+
           } else {
             return Boom.badRequest('There is issue in getting the contact details for PSO regions')
           }
