@@ -9,5 +9,5 @@ module.exports = [].concat(
   require('./standard-text-by-section'),
   require('./print-service'),
   require('./reference-number'),
-  require('./dynamics-crm')
-)
+  require('./dynamics-crm'),
+  require('./pso'))

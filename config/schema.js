@@ -25,5 +25,6 @@ module.exports = {
   printServiceJobStatusAndMapsURL: Joi.string().required(),
   sandboxURL: Joi.string().required(),
   appgatewayURL: Joi.string().required(),
-  httpSendTriggerURL: Joi.string().required()
+  httpSendTriggerURL: Joi.string().required(),
+  printServicePSOContactDetailsURL:Joi.string().required()
 }
