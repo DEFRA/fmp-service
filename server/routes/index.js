@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = [].concat(
   require('./error'),
   require('./is-england'),
   require('./test-db'),
@@ -9,4 +9,5 @@ module.exports = [
   require('./standard-text-by-section'),
   require('./print-service'),
   require('./reference-number'),
-  require('./pso')]
+  require('./dynamics-crm'),
+  require('./pso'))
