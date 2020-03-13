@@ -1,6 +1,4 @@
-const Joi = require('joi')
 const Boom = require('boom')
-const AppRefNumberGenerator = require('../util/refnumber')
 
 const dynamicsWebApi = require('../services/dynamics-authentication')
 
