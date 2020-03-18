@@ -4,11 +4,6 @@ const dynamicsWebApi = require('../services/dynamics-authentication')
 
 async function sendCustomerDetailsToCRM (customerDetails) {
   try {
-    var returnValue = ''
-    console.log(customerDetails.customerName)
-    console.log(customerDetails.emailAddress)
-    console.log(customerDetails.location)
-    console.log(customerDetails.applicationReferenceNumber)
     var customerPayload = {
       fmfp_name: customerDetails.customerName,
       fmfp_emailaddress: customerDetails.emailAddress,
@@ -18,19 +13,33 @@ async function sendCustomerDetailsToCRM (customerDetails) {
     }
 
     console.log(customerPayload)
-    //     // call dynamicsWebApi.create function
-    dynamicsWebApi.create(customerPayload, 'fmfp_customers', ['return=representation']).then(function (record) {
-      // do something with a record here
-      returnValue = record.subject
-      console.log(returnValue)
-      return returnValue
+    return await dynamicsWebApi.create(customerPayload, 'fmfp_customers').then(function (customerId) {
+      // Need to replace with logging statement
+      // console.log('Customer Created with ID', customerId)
+      return customerId
     }).catch(function (error) {
       throw error
     })
   } catch (error) {
     Boom.badImplementation('Problem in saving customer record:' + error)
   }
-  return returnValue
 }
 
-module.exports = sendCustomerDetailsToCRM
+async function updateReportGenerationTime (customerId) {
+  try {
+    var customerPayload = {
+      fmfp_reportgenerationtime: new Date().toISOString()
+    }
+    // console.log('Updating report generation Time', customerPayload)
+    // console.log('Customer Id to Update ', customerId)
+    // Need to replace with logging statements
+    dynamicsWebApi.update(customerId, 'fmfp_customers', customerPayload).then(function () {
+    }).catch(function (error) {
+      throw error
+    })
+  } catch (error) {
+    Boom.badImplementation('Problem in updating the customer record:' + error)
+  }
+}
+
+module.exports = { sendCustomerDetailsToCRM, updateReportGenerationTime }
