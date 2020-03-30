@@ -1,5 +1,4 @@
 const Boom = require('boom')
-const AppRefNumberGenerator = require('../util/refnumber')
 
 module.exports = {
   method: 'GET',
@@ -8,11 +7,17 @@ module.exports = {
     description: 'Returns application reference number',
     handler: async (request, h) => {
       try {
-        const applicationReferenceNumber = AppRefNumberGenerator()
+        const applicationReferenceNumber = generate()
         return Object.freeze(applicationReferenceNumber)
       } catch (err) {
         return Boom.badImplementation('Reference Number Generation failed', err)
       }
     }
   }
+}
+
+function generate () {
+  const generate = require('nanoid/generate')
+  const alphabet = '123456789ABCDEFGHJKMNPRTUVWXY'
+  return generate(alphabet, 12)
 }

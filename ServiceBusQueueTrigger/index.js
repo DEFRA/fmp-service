@@ -17,7 +17,7 @@ module.exports = async function (context, mySbMsg) {
   console.log(fmfpCustomerPayload)
   try {
     // Saving customer details into CRM
-    const result = await crmService(fmfpCustomerPayload)
+    const result = await crmService.sendCustomerDetailsToCRM(fmfpCustomerPayload)
     console.log('Customer details saved', result)
 
     // Creating request as if requested over http
@@ -29,6 +29,8 @@ module.exports = async function (context, mySbMsg) {
     }
     // calling print service.
     printService.handler(request)
+    // updating the time of report generation
+    await crmService.updateReportGenerationTime(result)
   } catch (error) {
     console.log(error)
   }
