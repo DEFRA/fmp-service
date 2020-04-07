@@ -4,10 +4,4 @@ module.exports = [].concat(
   require('./test-db'),
   require('./zones'),
   require('./zones-data'),
-  require('./zones-by-polygon'),
-  require('./standard-text'),
-  require('./standard-text-by-section'),
-  require('./print-service'),
-  require('./reference-number'),
-  require('./dynamics-crm'),
-  require('./pso'))
+  require('./zones-by-polygon'))

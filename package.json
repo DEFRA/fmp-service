@@ -14,15 +14,11 @@
   },
   "author": "ea.gov.uk",
   "license": "OGL",
-  "dependencies": {
-    "@azure/service-bus": "^1.1.2",
-    "azure-storage": "^2.10.3",
+  "dependencies": {  
     "@hapi/wreck": "^17.0.0",
-    "adal-node": "^0.2.1",
-    "azure": "^2.3.1-preview",
+    "adal-node": "^0.2.1",   
     "boom": "7.3.0",
     "dotnet": "^1.1.4",
-    "dynamics-web-api": "^1.6.2",
     "form-data": "^3.0.0",
     "glupe": "1.0.3",
     "good": "8.1.1",
@@ -32,8 +28,7 @@
     "joi": "14.3.0",
     "nanoid": "^2.1.11",
     "node-hapi-airbrake": "0.1.3",
-    "node-sass": "^4.13.1",
-    "pdfmake": "^0.1.64",
+    "node-sass": "^4.13.1",  
     "pg": "7.7.1",
     "request": "^2.88.0"
   },

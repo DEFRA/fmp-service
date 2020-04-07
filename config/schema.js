@@ -21,10 +21,5 @@ module.exports = {
     host: Joi.string().required(),
     proxy: Joi.string().allow('')
   }),
-  printServiceSubmitJobBaseURL: Joi.string().required(),
-  printServiceJobStatusAndMapsURL: Joi.string().required(),
-  sandboxURL: Joi.string().required(),
-  appgatewayURL: Joi.string().required(),
-  httpSendTriggerURL: Joi.string().required(),
-  printServicePSOContactDetailsURL: Joi.string().required()
+  httpSendTriggerURL: Joi.string().required()
 }
