@@ -1,10 +1,10 @@
 {
   "name": "fmp-service",
-  "version": "1.2.3",
+  "version": "0.1.4",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
   "engines": {
-    "node": "12.x"
+    "node": ">12"
   },
   "scripts": {
     "start": "pm2 start config/pm2.json",
@@ -14,9 +14,9 @@
   },
   "author": "ea.gov.uk",
   "license": "OGL",
-  "dependencies": {  
+  "dependencies": {
     "@hapi/wreck": "^17.0.0",
-    "adal-node": "^0.2.1",   
+    "adal-node": "^0.2.1",
     "boom": "7.3.0",
     "dotnet": "^1.1.4",
     "form-data": "^3.0.0",
@@ -28,7 +28,7 @@
     "joi": "14.3.0",
     "nanoid": "^2.1.11",
     "node-hapi-airbrake": "0.1.3",
-    "node-sass": "^4.13.1",  
+    "node-sass": "^4.13.1",
     "pg": "7.7.1",
     "request": "^2.88.0"
   },
