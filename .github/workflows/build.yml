@@ -35,5 +35,5 @@ jobs:
             -Dsonar.organization=defra
             -Dsonar.projectKey=DEFRA_fmp-service
             -Dsonar.exclusions=**/node_modules/**,**/test/**,**/test-output/**
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=lcov.info
             -Dsonar.javascript.exclusions=**/node_modules/**,**/test/**,**/test-output/**,**/server/dist/**,**/server/src/**
