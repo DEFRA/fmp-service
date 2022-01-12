@@ -1,16 +1,16 @@
 {
   "name": "fmp-service",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
   "engines": {
-    "node": "8.x"
+    "node": "12.x"
   },
   "scripts": {
     "start": "pm2 start config/pm2.json",
     "lint": "standard",
-    "unit-test-console": "lab -c -r console",
-    "test": "standard && lab -c -r console -o stdout -r lcov -o lcov.info"
+    "unit-test-console": "lab -l -c -r console",
+    "test": "standard && lab -l -c -r console -o stdout -r lcov -o lcov.info"
   },
   "author": "ea.gov.uk",
   "license": "OGL",
