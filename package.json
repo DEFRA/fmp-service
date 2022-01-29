@@ -9,8 +9,8 @@
   "scripts": {
     "start": "pm2 start config/pm2.json",
     "lint": "standard",
-    "unit-test-console": "lab -c -r console",
-    "test": "standard && lab -c -r console -o stdout -r lcov -o lcov.info"
+    "unit-test-console": "lab -l -c -r console",
+    "test": "standard && lab -l -c -r console -o stdout -r lcov -o lcov.info"
   },
   "author": "ea.gov.uk",
   "license": "OGL",
