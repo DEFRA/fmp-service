@@ -9,7 +9,7 @@ const server = Hapi.Server({
 const route = require('../../server/routes/is-england')
 server.route(route)
 
-let services = require('../../server/services')
+const services = require('../../server/services')
 
 lab.experiment('route: is-england', () => {
   lab.before(async () => {

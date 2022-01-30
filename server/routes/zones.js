@@ -9,7 +9,7 @@ module.exports = {
     description: 'Gets the flood map for planning flood zones for a point and radius',
     handler: async (request, h) => {
       try {
-        let result = await services.getFloodZones(request.params.easting, request.params.northing, request.params.radius)
+        const result = await services.getFloodZones(request.params.easting, request.params.northing, request.params.radius)
 
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {
           return Boom.badRequest('Invalid result', new Error('Expected an Array'))
