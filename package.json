@@ -33,7 +33,6 @@
   "devDependencies": {
     "@hapi/lab": "^24.5.1",
     "code": "5.2.4",
-    "codeclimate-test-reporter": "0.5.1",
     "standard": "^16.0.4"
   }
 }
