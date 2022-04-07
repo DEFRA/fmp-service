@@ -1,6 +1,6 @@
 const Lab = require('@hapi/lab')
 const lab = exports.lab = Lab.script()
-const Code = require('code')
+const Code = require('@hapi/code')
 const Hapi = require('@hapi/hapi')
 const server = Hapi.Server({
   host: 'localhost',

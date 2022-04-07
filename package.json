@@ -31,8 +31,8 @@
     "pg": "8.7.3"
   },
   "devDependencies": {
+    "@hapi/code": "^8.0.7",
     "@hapi/lab": "^24.5.1",
-    "code": "5.2.4",
     "standard": "^16.0.4"
   }
 }
