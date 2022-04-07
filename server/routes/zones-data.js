@@ -1,5 +1,5 @@
-var fs = require('fs')
-const Boom = require('boom')
+const fs = require('fs')
+const Boom = require('@hapi/boom')
 module.exports = {
   method: 'GET',
   path: '/zones/{zoneNumber}',
@@ -7,8 +7,8 @@ module.exports = {
     description: 'Based on Zone Number passed, it will send static data as HTML',
     handler: async (request, h) => {
       try {
-        var zoneNumber = request.params.zoneNumber
-        var filePath = process.env.PWD + `/data/flood-zones/${zoneNumber}.html`
+        const zoneNumber = request.params.zoneNumber
+        const filePath = process.env.PWD + `/data/flood-zones/${zoneNumber}.html`
         if (fs.existsSync(filePath)) {
           return fs.readFileSync(filePath, { encoding: 'utf-8' })
         } else {
