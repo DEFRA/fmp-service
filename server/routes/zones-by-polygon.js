@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const Boom = require('boom')
+const Boom = require('@hapi/boom')
 const services = require('../services')
 
 module.exports = {
@@ -21,10 +21,10 @@ module.exports = {
       }
     },
     validate: {
-      query: {
+      query: Joi.object().keys({
         // TODO improve validation to geojson or json
         polygon: Joi.string().required()
-      }
+      })
     }
   }
 }

@@ -10,7 +10,7 @@ const databaseSchema = Joi.object().required().keys({
   connectionString: Joi.string().required()
 })
 
-module.exports = {
+module.exports = Joi.object({
   server: serverSchema,
   logging: Joi.object(),
   database: databaseSchema,
@@ -21,4 +21,4 @@ module.exports = {
     host: Joi.string().required(),
     proxy: Joi.string().allow('')
   })
-}
+})

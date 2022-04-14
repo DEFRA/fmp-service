@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const Boom = require('boom')
+const Boom = require('@hapi/boom')
 const services = require('../services')
 
 module.exports = {
@@ -19,10 +19,10 @@ module.exports = {
       }
     },
     validate: {
-      params: {
+      params: Joi.object().keys({
         x: Joi.number().max(700000).positive().required(),
         y: Joi.number().max(1300000).positive().required()
-      }
+      })
     }
   }
 }

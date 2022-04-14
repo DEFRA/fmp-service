@@ -1,10 +1,10 @@
 {
   "name": "fmp-service",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
   "engines": {
-    "node": ">12"
+    "node": ">16.14.0"
   },
   "scripts": {
     "start": "pm2 start config/pm2.json",
@@ -15,27 +15,20 @@
   "author": "ea.gov.uk",
   "license": "OGL",
   "dependencies": {
-    "@hapi/wreck": "^17.0.0",
-    "adal-node": "^0.2.1",
-    "boom": "7.3.0",
-    "dotnet": "^1.1.4",
-    "form-data": "^3.0.0",
-    "glupe": "1.0.3",
-    "good": "8.1.1",
-    "good-console": "7.1.0",
-    "good-file": "6.0.1",
-    "good-squeeze": "5.1.0",
-    "joi": "14.3.0",
-    "nanoid": "^2.1.11",
+    "@hapi/boom": "^9.1.4",
+    "@hapi/good": "^9.0.1",
+    "@hapi/good-console": "^9.0.1",
+    "@hapi/good-squeeze": "^6.0.0",
+    "@hapi/hapi": "^20.2.1",
+    "@hapi/wreck": "^17.1.0",
+    "form-data": "^4.0.0",
+    "joi": "17.6.0",
     "node-hapi-airbrake": "0.1.3",
-    "node-sass": "^4.13.1",
-    "pg": "7.7.1",
-    "request": "^2.88.0"
+    "pg": "8.7.3"
   },
   "devDependencies": {
-    "code": "5.2.4",
-    "codeclimate-test-reporter": "0.5.1",
-    "lab": "18.0.0",
-    "standard": "12.0.1"
+    "@hapi/code": "^8.0.7",
+    "@hapi/lab": "^24.5.1",
+    "standard": "^16.0.4"
   }
 }
