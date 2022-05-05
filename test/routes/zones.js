@@ -1,9 +1,9 @@
 'user strict'
 
-const Lab = require('lab')
+const Lab = require('@hapi/lab')
 const lab = exports.lab = Lab.script()
-const Code = require('code')
-const Hapi = require('hapi')
+const Code = require('@hapi/code')
+const Hapi = require('@hapi/hapi')
 const server = Hapi.Server({
   host: 'localhost',
   port: 8050
@@ -11,18 +11,18 @@ const server = Hapi.Server({
 const route = require('../../server/routes/zones')
 server.route(route)
 
-let services = require('../../server/services')
+const services = require('../../server/services')
 
 const dbResponse = {
-  'point_in_england': true,
-  'buffer_in_england': true,
-  'england_error': false,
-  'floodzone_3': false,
-  'floodzone_3_error': false,
-  'areas_benefiting': false,
-  'areas_benefiting_error': false,
-  'floodzone_2': true,
-  'floodzone_2_error': false
+  point_in_england: true,
+  buffer_in_england: true,
+  england_error: false,
+  floodzone_3: false,
+  floodzone_3_error: false,
+  areas_benefiting: false,
+  areas_benefiting_error: false,
+  floodzone_2: true,
+  floodzone_2_error: false
 }
 
 lab.experiment('zones', () => {

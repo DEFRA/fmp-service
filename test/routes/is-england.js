@@ -1,7 +1,7 @@
-const Lab = require('lab')
+const Lab = require('@hapi/lab')
 const lab = exports.lab = Lab.script()
-const Code = require('code')
-const Hapi = require('hapi')
+const Code = require('@hapi/code')
+const Hapi = require('@hapi/hapi')
 const server = Hapi.Server({
   host: 'localhost',
   port: 8050
@@ -9,7 +9,7 @@ const server = Hapi.Server({
 const route = require('../../server/routes/is-england')
 server.route(route)
 
-let services = require('../../server/services')
+const services = require('../../server/services')
 
 lab.experiment('route: is-england', () => {
   lab.before(async () => {
@@ -76,7 +76,6 @@ lab.experiment('route: is-england', () => {
     services.isEngland = async (x, y) => {
       throw new Error('test error')
     }
-
     const response = await server.inject(options)
     Code.expect(response.statusCode).to.equal(500)
   })
