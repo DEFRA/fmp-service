@@ -2,5 +2,7 @@ node_modules
 lcov.info
 server.json
 .vscode
-logs
 
+logs
+local.settings.json
+*.pdf

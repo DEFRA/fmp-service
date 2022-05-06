@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const Boom = require('boom')
+const Boom = require('@hapi/boom')
 const services = require('../services')
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     description: 'Gets the flood map for planning flood zones for a polygon in geojson format',
     handler: async (request, h) => {
       try {
-        let result = await services.getFloodZonesByPolygon(request.query.polygon)
+        const result = await services.getFloodZonesByPolygon(request.query.polygon)
 
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {
           return Boom.badRequest('Invalid result', new Error('Expected an Array'))
@@ -21,10 +21,10 @@ module.exports = {
       }
     },
     validate: {
-      query: {
+      query: Joi.object().keys({
         // TODO improve validation to geojson or json
         polygon: Joi.string().required()
-      }
+      })
     }
   }
 }
