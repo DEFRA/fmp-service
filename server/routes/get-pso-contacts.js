@@ -6,8 +6,8 @@ module.exports = {
   method: 'GET',
   path: '/get-pso-contacts/{x}/{y}',
   options: {
-    description: 'Returns the psoContactDetails as json for a given Easting and Northing point in Englan',
-    handler: async (request, h) => {
+    description: 'Returns the psoContactDetails as json for a given Easting and Northing point in England',
+    handler: async (request, _h) => {
       try {
         const result = await services.getPsoContacts(request.params.x, request.params.y)
         if (!result || !Array.isArray(result.rows) || result.rows.length !== 1) {

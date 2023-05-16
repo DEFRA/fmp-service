@@ -15,5 +15,6 @@ module.exports = {
   isEngland: (x, y) => {
     return pool.query(queries.isEngland, [x, y])
   },
-  getPsoContacts: (x, y) => pool.query(queries.getPsoContacts, [x, y])
+  getPsoContacts: (x, y) => pool.query(queries.getPsoContacts, [x, y]),
+  getPsoContactsByPolygon: polygon => pool.query(queries.getPsoContactsByPolygon, [polygon])
 }
