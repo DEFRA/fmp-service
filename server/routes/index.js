@@ -6,4 +6,7 @@ module.exports = [].concat(
   require('./test-db'),
   require('./zones'),
   require('./zones-data'),
-  require('./zones-by-polygon'))
+  require('./zones-by-polygon'),
+  require('./get-surface-water'),
+  require('./get-surface-water-by-polygon')
+)

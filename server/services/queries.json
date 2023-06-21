@@ -3,5 +3,7 @@
     "getFloodZonesByPolygon": "select fmp.get_fmp_zones_by_polygon($1);",
     "isEngland": "select fmp.is_england($1, $2);",
     "getPsoContacts": "select fmp.get_pso_contacts($1, $2);",
-    "getPsoContactsByPolygon": "select fmp.get_pso_contacts_by_polygon($1);"
+    "getPsoContactsByPolygon": "select fmp.get_pso_contacts_by_polygon($1);",
+    "getSurfaceWater": "select u_ltfri.calculate_surface_water_risk($1, $2, $3);",
+    "getSurfaceWaterByPolygon": "select u_ltfri.calculate_surface_water_risk_from_polygon($1, $2);"
 }
