@@ -7,7 +7,8 @@ const serverSchema = Joi.object().required().keys({
 })
 
 const databaseSchema = Joi.object().required().keys({
-  connectionString: Joi.string().required()
+  connectionString: Joi.string().required(),
+  ltfConnectionString: Joi.string()
 })
 
 module.exports = Joi.object({
