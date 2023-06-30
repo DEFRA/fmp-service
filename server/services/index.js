@@ -27,8 +27,11 @@ module.exports = {
     return {rows: [{calculate_surface_water_risk: {}}]}
   },
   getSurfaceWaterByPolygon: (polygon, radius = 0) => {
+    console.log('getSurfaceWaterByPolygon ltfConnectionString', ltfConnectionString)
     if (ltfPool) {
-      return ltfPool.query(queries.getSurfaceWaterByPolygon, [polygon, radius])
+      return  ltfPool.query(queries.getSurfaceWaterByPolygon, [polygon, radius]).then((response) => {
+        console.log('getSurfaceWaterByPolygon response', response)
+      })
     }
     return {rows: [{calculate_surface_water_risk_from_polygon: {}}]}
   }
