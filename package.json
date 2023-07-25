@@ -1,10 +1,10 @@
 {
   "name": "fmp-service",
-  "version": "2.1.0",
+  "version": "2.6.0-pre.3",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
   "engines": {
-    "node": ">16.14.0"
+    "node": ">=18.17.0"
   },
   "scripts": {
     "start": "pm2 start config/pm2.json",
