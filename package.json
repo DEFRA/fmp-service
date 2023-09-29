@@ -1,6 +1,6 @@
 {
   "name": "fmp-service",
-  "version": "2.6.0-pre.3",
+  "version": "2.6.0-sandbox.0",
   "description": "Flood Map for Planning backend services",
   "main": "index.js",
   "engines": {
@@ -10,7 +10,8 @@
     "start": "pm2 start config/pm2.json",
     "lint": "standard",
     "unit-test-console": "lab -l -c -r console",
-    "test": "standard && lab -l -c -r console -o stdout -r lcov -o lcov.info"
+    "test": "standard && lab -l -c -r console -o stdout -r lcov -o lcov.info",
+    "increment-version": "npm version prerelease --preid=sandbox -m \"Set Version to %s\""
   },
   "author": "ea.gov.uk",
   "license": "OGL",
