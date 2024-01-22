@@ -5,5 +5,6 @@
     "getPsoContacts": "select fmp.get_pso_contacts($1, $2);",
     "getPsoContactsByPolygon": "select fmp.get_pso_contacts_by_polygon($1);",
     "getSurfaceWater": "select u_ltfri.calculate_surface_water_risk($1, $2, $3);",
-    "getSurfaceWaterByPolygon": "select u_ltfri.calculate_surface_water_risk_from_polygon($1, $2);"
+    "getSurfaceWaterByPolygon": "select u_ltfri.calculate_surface_water_risk_from_polygon($1, $2);",
+    "getSNDPassword": "select snd_password FROM snd_password LIMIT 1;"
 }

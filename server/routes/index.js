@@ -8,5 +8,6 @@ module.exports = [].concat(
   require('./zones-data'),
   require('./zones-by-polygon'),
   require('./get-surface-water'),
-  require('./get-surface-water-by-polygon')
+  require('./get-surface-water-by-polygon'),
+  require('./snd-password')
 )

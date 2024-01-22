@@ -31,5 +31,6 @@ module.exports = {
       return ltfPool.query(queries.getSurfaceWaterByPolygon, [polygon, radius])
     }
     return { rows: [{ calculate_surface_water_risk_from_polygon: {} }] }
-  }
+  },
+  getSndPassword: () => pool.query(queries.getSNDPassword)
 }
