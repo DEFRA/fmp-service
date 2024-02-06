@@ -4,7 +4,5 @@ module.exports = [].concat(
   require('./get-pso-contacts'),
   require('./get-pso-contacts-by-polygon'),
   require('./test-db'),
-  require('./zones-by-polygon'),
-  require('./get-surface-water'),
-  require('./get-surface-water-by-polygon')
+  require('./zones-by-polygon')
 )
