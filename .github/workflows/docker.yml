@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+      - fmp-5000_containerisation
   workflow_dispatch:
   
 env:
