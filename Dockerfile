@@ -20,6 +20,20 @@ COPY --chown=root:root ./server ./server
 COPY --chown=root:root ./config ./config
 COPY --chown=root:root ./index.js .
 
+FROM base AS development
+
+# Temporarily disable the postinstall NPM script
+RUN npm pkg set scripts.postinstall="echo no-postinstall"
+RUN npm i --omit dev
+
+USER node
+
+EXPOSE ${PORT}/tcp
+
+CMD [ "npm", "start" ]
+
+FROM base AS production
+
 # Temporarily disable the postinstall NPM script
 RUN npm pkg set scripts.postinstall="echo no-postinstall"
 RUN npm i --omit dev
