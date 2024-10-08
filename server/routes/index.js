@@ -1,4 +1,5 @@
 module.exports = [].concat(
+  require('./health-check'),
   require('./error'),
   require('./is-england'),
   require('./get-pso-contacts'),
