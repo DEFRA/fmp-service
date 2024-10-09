@@ -7,7 +7,7 @@ module.exports = {
   path: '/health-check',
   options: {
     description: 'Static health-check page for fmp-service',
-    handler: async (request, h) => {
+    handler: async () => {
       return JSON.stringify({
         name: 'fmp-service',
         version
