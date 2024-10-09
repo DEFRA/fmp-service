@@ -5,6 +5,7 @@ const Code = require('@hapi/code')
 const Hapi = require('@hapi/hapi')
 const server = Hapi.Server({
   host: 'localhost',
+  debug: false,
   port: 8050
 })
 const route = require('../../server/routes/is-england')

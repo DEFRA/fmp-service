@@ -19,6 +19,9 @@ COPY --chown=root:root package*.json ./
 COPY --chown=root:root ./server ./server
 COPY --chown=root:root ./config ./config
 COPY --chown=root:root ./index.js .
+COPY --chown=root:root ./version.js .
+ARG BUILD_VERSION=3.0.0.default
+RUN echo -e "module.exports = { version: '$BUILD_VERSION' }" > ./version.js
 
 FROM base AS development
 
