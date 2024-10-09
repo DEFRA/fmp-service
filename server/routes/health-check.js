@@ -1,7 +1,5 @@
 const { version } = require('../../version.js')
 
-console.log('Starting version ', version)
-
 module.exports = {
   method: 'GET',
   path: '/health-check',
