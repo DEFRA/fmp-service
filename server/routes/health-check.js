@@ -8,10 +8,10 @@ module.exports = {
   options: {
     description: 'Static health-check page for fmp-service',
     handler: async (request, h) => {
-      return {
+      return JSON.stringify({
         name: 'fmp-service',
         version
-      }
+      })
     }
   }
 }
