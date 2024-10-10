@@ -21,7 +21,8 @@ COPY --chown=root:root ./config ./config
 COPY --chown=root:root ./index.js .
 COPY --chown=root:root ./version.js .
 ARG BUILD_VERSION=3.0.0.default
-RUN echo -e "module.exports = { version: '$BUILD_VERSION' }" > ./version.js
+ARG GIT_COMMIT=0
+RUN echo -e "module.exports = { version: '$BUILD_VERSION', revision: '$GIT_COMMIT' }" > ./version.js
 
 FROM base AS development
 

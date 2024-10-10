@@ -1,4 +1,4 @@
-const { version } = require('../../version.js')
+const { version, revision } = require('../../version.js')
 
 module.exports = {
   method: 'GET',
@@ -8,7 +8,8 @@ module.exports = {
     handler: async () => {
       return JSON.stringify({
         name: 'fmp-service',
-        version
+        version,
+        revision
       })
     }
   }
