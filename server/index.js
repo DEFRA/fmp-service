@@ -1,5 +1,5 @@
 const hapi = require('@hapi/hapi')
-const config = require('../config')
+const config = require('./config')
 
 async function createServer () {
   const server = hapi.server({

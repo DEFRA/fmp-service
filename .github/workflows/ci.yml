@@ -14,14 +14,14 @@ jobs:
       - name: Install nodejs
         uses: actions/setup-node@v1
         with:
-          node-version: "16.14.x"
+          node-version: "18.17.x"
             
       - name: Install node dependencies
         run: npm i
             
       - name: Run unit tests
         run: |
-          cp ./config/server.example.json ./config/server.json
+          cp ./config/.env-example .env
           npm run test
           sed -i 's/\/home\/runner\/work\/fmp-service\/fmp-service\//\/github\/workspace\//g' lcov.info
 

@@ -7,7 +7,7 @@
     "node": ">=18.17.0"
   },
   "scripts": {
-    "start": "pm2 start config/pm2.json",
+    "start": "node index.js",
     "lint": "standard",
     "unit-test-console": "lab -l -c -r console",
     "test": "standard && lab -l -c -r console -o stdout -r lcov -o lcov.info",
@@ -23,6 +23,7 @@
     "@hapi/good-squeeze": "^6.0.0",
     "@hapi/hapi": "^20.2.1",
     "@hapi/wreck": "^17.1.0",
+    "dotenv": "^16.4.5",
     "form-data": "^4.0.0",
     "joi": "17.6.0",
     "node-hapi-airbrake": "0.1.3",
