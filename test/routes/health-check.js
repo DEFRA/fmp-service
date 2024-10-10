@@ -2,7 +2,7 @@ const Lab = require('@hapi/lab')
 const lab = exports.lab = Lab.script()
 const Code = require('@hapi/code')
 const Hapi = require('@hapi/hapi')
-const { version } = require('../../version')
+const { revision } = require('../../version')
 
 const server = Hapi.Server({
   host: 'localhost',
@@ -27,6 +27,6 @@ lab.experiment('health-check', () => {
     })
     Code.expect(response.statusCode).to.equal(200)
     const { payload } = response
-    Code.expect(payload).to.equal(`{"name":"fmp-service","version":"${version}"}`)
+    Code.expect(payload).to.equal(`{"name":"fmp-service","version":"v3.0.0-pre-1","revision":"${revision}"}`)
   })
 })
