@@ -8,7 +8,7 @@ module.exports = {
     handler: async () => {
       return JSON.stringify({
         name: 'fmp-service',
-        version,
+        version: version.substring(0, version.lastIndexOf('-')),
         revision
       })
     }
