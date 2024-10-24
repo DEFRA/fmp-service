@@ -8,3 +8,4 @@ server.snd.json
 logs
 local.settings.json
 *.pdf
+.env

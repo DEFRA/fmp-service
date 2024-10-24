@@ -1,5 +1,5 @@
 const queries = require('./queries.json')
-const conn = require('../../config').database.connectionString
+const conn = require('../config').database.connectionString
 const { Pool } = require('pg')
 const pool = new Pool({
   connectionString: conn
